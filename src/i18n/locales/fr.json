@@ -96,7 +96,32 @@
     "step3":"Add-ons & services",
     "airlift":"Besoin Star Aviation (travail aérien)", 
     "airlift_note":"Réservé aux clients sous contrat ; planifiez navettes/charters/medevac.",
-    "ticketing":"Billetterie (Ain Salah Siyaha)"
+    "ticketing":"Billetterie (Ain Salah Siyaha)",
+    "submit":"Soumettre le RFQ",
+    "saved":"RFQ enregistré — consultez vos missions."
+  },
+  "rfq_form": {
+    "step1":"Profils & volumétrie",
+    "profile":"Profil",
+    "seniority":"Séniorité",
+    "qty":"Quantité",
+    "addProfile":"+ Ajouter un profil",
+    "next":"Suivant",
+    "step2":"Sites & SLA",
+    "sites":"Sites",
+    "startDate":"Date de démarrage",
+    "rotationOn":"Jours ON",
+    "rotationOff":"Jours OFF",
+    "languages":"Langues",
+    "hse":"Exigences HSE",
+    "step3":"Add-ons & services",
+    "placeholders": {
+      "profile":"Technicien HSE, Électricien...",
+      "qty":"Ex.: 5"
+    },
+    "helpers": {
+      "rotation":"Ex.: 14/14 ou 28/28"
+    }
   },
   "about": {
     "mission_title":"Qui sommes-nous ?",
