@@ -132,21 +132,27 @@ export const useSession = create<SessionState>()(
 
       cleanupAuthState: () => {
         // Clear standard auth tokens
-        localStorage.removeItem('supabase.auth.token');
-        
-        // Remove all Supabase auth keys from localStorage
-        Object.keys(localStorage).forEach((key) => {
-          if (key.startsWith('supabase.auth.') || key.includes('sb-')) {
-            localStorage.removeItem(key);
+        try {
+          localStorage.removeItem('supabase.auth.token');
+          
+          // Remove all Supabase auth keys from localStorage
+          Object.keys(localStorage).forEach((key) => {
+            if (key.startsWith('supabase.auth.') || key.includes('sb-')) {
+              localStorage.removeItem(key);
+            }
+          });
+          
+          // Remove from sessionStorage if in use
+          if (typeof sessionStorage !== 'undefined') {
+            Object.keys(sessionStorage || {}).forEach((key) => {
+              if (key.startsWith('supabase.auth.') || key.includes('sb-')) {
+                sessionStorage.removeItem(key);
+              }
+            });
           }
-        });
-        
-        // Remove from sessionStorage if in use
-        Object.keys(sessionStorage || {}).forEach((key) => {
-          if (key.startsWith('supabase.auth.') || key.includes('sb-')) {
-            sessionStorage.removeItem(key);
-          }
-        });
+        } catch (error) {
+          console.warn('Error cleaning auth state:', error);
+        }
 
         // Reset state
         set({
@@ -167,7 +173,35 @@ export const useSession = create<SessionState>()(
         isStaff: state.isStaff,
         role: state.role,
         tenantId: state.tenantId
-      })
+      }),
+      // Simplify storage configuration to prevent SSR/hydration issues
+      storage: {
+        getItem: (name) => {
+          if (typeof window === 'undefined') return null;
+          try {
+            const item = localStorage.getItem(name);
+            return item ? JSON.parse(item) : null;
+          } catch {
+            return null;
+          }
+        },
+        setItem: (name, value) => {
+          if (typeof window === 'undefined') return;
+          try {
+            localStorage.setItem(name, JSON.stringify(value));
+          } catch {
+            // Ignore storage errors
+          }
+        },
+        removeItem: (name) => {
+          if (typeof window === 'undefined') return;
+          try {
+            localStorage.removeItem(name);
+          } catch {
+            // Ignore storage errors
+          }
+        },
+      },
     }
   )
 );
