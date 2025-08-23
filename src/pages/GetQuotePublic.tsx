@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Seo } from "@/components/Seo";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const GetQuotePublic = () => {
   const { t } = useTranslation();
@@ -45,8 +46,19 @@ const GetQuotePublic = () => {
     setIsSubmitting(true);
 
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Save lead to Supabase
+      const { error } = await supabase.from('leads').insert({
+        company: formData.company,
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        site: formData.region,
+        need_summary: formData.summary,
+        star_aviation: formData.starAviation ? {} : null,
+        ticketing: formData.billetterie
+      });
+
+      if (error) throw error;
       
       // Track lead submission
       console.log('LEAD_SUBMIT', formData);

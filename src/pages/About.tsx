@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Users, Award, Target } from "lucide-react";
+import { Seo } from "@/components/Seo";
 
 const About = () => {
   const { t } = useTranslation();
@@ -48,7 +49,12 @@ const About = () => {
   ];
 
   return (
-    <div className="container max-w-6xl mx-auto px-4 py-12">
+    <>
+      <Seo 
+        title={t('about.title')}
+        description={t('about.description')}
+      />
+      <div className="container max-w-6xl mx-auto px-4 py-12">
       {/* Hero Section */}
       <div className="text-center mb-16">
         <h1 className="text-4xl md:text-5xl font-bold text-ink-900 mb-4">
@@ -169,7 +175,8 @@ const About = () => {
           </Button>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 };
 

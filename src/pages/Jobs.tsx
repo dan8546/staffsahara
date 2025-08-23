@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { MapPin, Calendar, DollarSign, Search } from "lucide-react";
+import { Seo } from "@/components/Seo";
 
 const mockJobs = [
   {
@@ -61,7 +62,12 @@ const Jobs = () => {
   };
 
   return (
-    <div className="container max-w-6xl mx-auto px-4 py-12">
+    <>
+      <Seo 
+        title={t('jobs.title')}
+        description={t('jobs.description')}
+      />
+      <div className="container max-w-6xl mx-auto px-4 py-12">
       <div className="text-center mb-8">
         <h1 className="text-4xl font-bold text-ink-900 mb-2">
           {t('nav.jobs')}
@@ -150,7 +156,8 @@ const Jobs = () => {
           Charger plus d'offres
         </Button>
       </div>
-    </div>
+      </div>
+    </>
   );
 };
 

@@ -16,6 +16,17 @@
     "airQuote":"Demander un devis Star Aviation", 
     "seeAviation":"Voir nos capacités aériennes"
   },
+  "public": {
+    "banner": "Vous consultez la version publique — certaines fonctions nécessitent une connexion."
+  },
+  "about": {
+    "title": "À propos de Staff Sahara",
+    "description": "Staff Sahara, leader du recrutement dans le secteur pétrolier algérien. Solutions RH sur mesure pour l'industrie Oil & Gas."
+  },
+  "jobs": {
+    "title": "Offres d'emploi - Staff Sahara",
+    "description": "Découvrez les opportunités d'emploi dans le Grand Sud algérien. Postes Oil & Gas, ingénierie, HSE et logistique."
+  },
   "getQuote": {
     "title": "Demander un devis",
     "subtitle": "Décrivez votre besoin et recevez une proposition commerciale personnalisée",

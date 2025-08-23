@@ -16,6 +16,17 @@
     "airQuote":"Request Star Aviation Quote", 
     "seeAviation":"See Our Aviation Capabilities"
   },
+  "public": {
+    "banner": "You are viewing the public version — some features require login."
+  },
+  "about": {
+    "title": "About Staff Sahara",
+    "description": "Staff Sahara, leader in recruitment for the Algerian oil sector. Tailor-made HR solutions for the Oil & Gas industry."
+  },
+  "jobs": {
+    "title": "Job Offers - Staff Sahara",
+    "description": "Discover job opportunities in the Algerian Deep South. Oil & Gas, engineering, HSE and logistics positions."
+  },
   "getQuote": {
     "title": "Request Quote",
     "subtitle": "Describe your needs and receive a personalized commercial proposal",

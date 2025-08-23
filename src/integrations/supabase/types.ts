@@ -14,6 +14,48 @@ export type Database = {
   }
   public: {
     Tables: {
+      leads: {
+        Row: {
+          company: string
+          created_at: string | null
+          email: string
+          id: string
+          name: string
+          need_summary: string | null
+          phone: string | null
+          site: string | null
+          source: string | null
+          star_aviation: Json | null
+          ticketing: boolean | null
+        }
+        Insert: {
+          company: string
+          created_at?: string | null
+          email: string
+          id?: string
+          name: string
+          need_summary?: string | null
+          phone?: string | null
+          site?: string | null
+          source?: string | null
+          star_aviation?: Json | null
+          ticketing?: boolean | null
+        }
+        Update: {
+          company?: string
+          created_at?: string | null
+          email?: string
+          id?: string
+          name?: string
+          need_summary?: string | null
+          phone?: string | null
+          site?: string | null
+          source?: string | null
+          star_aviation?: Json | null
+          ticketing?: boolean | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string
