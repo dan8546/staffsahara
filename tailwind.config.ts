@@ -12,13 +12,31 @@ export default {
 	theme: {
 		container: {
 			center: true,
-			padding: '2rem',
+			padding: '1rem',
 			screens: {
 				'2xl': '1400px'
 			}
 		},
 		extend: {
 			colors: {
+				// Brand colors
+				brand: {
+					blue: '#1A428A',
+					gold: '#D79A2B'
+				},
+				// Text colors
+				ink: {
+					900: '#111827',
+					700: '#374151', 
+					500: '#6B7280',
+					300: '#D1D5DB'
+				},
+				// Background colors
+				paper: {
+					0: '#FFFFFF',
+					50: '#F3F4F6'
+				},
+				// Semantic colors using design tokens
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
@@ -51,22 +69,20 @@ export default {
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
-				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
 				}
+			},
+			fontFamily: {
+				sans: ['Montserrat', 'sans-serif'],
+				ar: ['Tajawal', 'sans-serif']
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				md: 'calc(var(--radius) - 2px)', 
+				sm: 'calc(var(--radius) - 4px)',
+				'2xl': '1rem'
+			},
+			boxShadow: {
+				soft: '0 4px 16px rgba(0,0,0,0.06)'
 			},
 			keyframes: {
 				'accordion-down': {
