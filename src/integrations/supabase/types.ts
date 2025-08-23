@@ -14,6 +14,115 @@ export type Database = {
   }
   public: {
     Tables: {
+      air_requests: {
+        Row: {
+          created_at: string | null
+          created_by: string
+          details: Json | null
+          id: string
+          request_type: string
+          status: string | null
+          tenant_id: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          created_by: string
+          details?: Json | null
+          id?: string
+          request_type: string
+          status?: string | null
+          tenant_id: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          created_by?: string
+          details?: Json | null
+          id?: string
+          request_type?: string
+          status?: string | null
+          tenant_id?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "air_requests_tenant_id_fkey"
+            columns: ["tenant_id"]
+            isOneToOne: false
+            referencedRelation: "tenants"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      applications: {
+        Row: {
+          applicant_id: string
+          applied_at: string | null
+          cover_letter: string | null
+          id: string
+          opening_id: string
+          resume_url: string | null
+          status: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          applicant_id: string
+          applied_at?: string | null
+          cover_letter?: string | null
+          id?: string
+          opening_id: string
+          resume_url?: string | null
+          status?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          applicant_id?: string
+          applied_at?: string | null
+          cover_letter?: string | null
+          id?: string
+          opening_id?: string
+          resume_url?: string | null
+          status?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "applications_opening_id_fkey"
+            columns: ["opening_id"]
+            isOneToOne: false
+            referencedRelation: "openings"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      candidate_badges: {
+        Row: {
+          badge_data: Json | null
+          badge_type: string
+          earned_at: string | null
+          expires_at: string | null
+          id: string
+          user_id: string
+        }
+        Insert: {
+          badge_data?: Json | null
+          badge_type: string
+          earned_at?: string | null
+          expires_at?: string | null
+          id?: string
+          user_id: string
+        }
+        Update: {
+          badge_data?: Json | null
+          badge_type?: string
+          earned_at?: string | null
+          expires_at?: string | null
+          id?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       leads: {
         Row: {
           company: string
@@ -55,6 +164,151 @@ export type Database = {
           ticketing?: boolean | null
         }
         Relationships: []
+      }
+      mission_docs: {
+        Row: {
+          created_at: string | null
+          file_path: string
+          filename: string
+          id: string
+          mission_id: string
+          tenant_id: string
+          uploaded_by: string
+        }
+        Insert: {
+          created_at?: string | null
+          file_path: string
+          filename: string
+          id?: string
+          mission_id: string
+          tenant_id: string
+          uploaded_by: string
+        }
+        Update: {
+          created_at?: string | null
+          file_path?: string
+          filename?: string
+          id?: string
+          mission_id?: string
+          tenant_id?: string
+          uploaded_by?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "mission_docs_mission_id_fkey"
+            columns: ["mission_id"]
+            isOneToOne: false
+            referencedRelation: "missions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "mission_docs_tenant_id_fkey"
+            columns: ["tenant_id"]
+            isOneToOne: false
+            referencedRelation: "tenants"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      missions: {
+        Row: {
+          created_at: string | null
+          created_by: string
+          description: string | null
+          end_date: string | null
+          id: string
+          location: string | null
+          start_date: string | null
+          status: string | null
+          tenant_id: string
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          created_by: string
+          description?: string | null
+          end_date?: string | null
+          id?: string
+          location?: string | null
+          start_date?: string | null
+          status?: string | null
+          tenant_id: string
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          created_by?: string
+          description?: string | null
+          end_date?: string | null
+          id?: string
+          location?: string | null
+          start_date?: string | null
+          status?: string | null
+          tenant_id?: string
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "missions_tenant_id_fkey"
+            columns: ["tenant_id"]
+            isOneToOne: false
+            referencedRelation: "tenants"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      openings: {
+        Row: {
+          created_at: string | null
+          created_by: string
+          description: string | null
+          id: string
+          location: string | null
+          requirements: string[] | null
+          salary_range: string | null
+          status: string | null
+          tenant_id: string
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          created_by: string
+          description?: string | null
+          id?: string
+          location?: string | null
+          requirements?: string[] | null
+          salary_range?: string | null
+          status?: string | null
+          tenant_id: string
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          created_by?: string
+          description?: string | null
+          id?: string
+          location?: string | null
+          requirements?: string[] | null
+          salary_range?: string | null
+          status?: string | null
+          tenant_id?: string
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "openings_tenant_id_fkey"
+            columns: ["tenant_id"]
+            isOneToOne: false
+            referencedRelation: "tenants"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       profiles: {
         Row: {
@@ -109,6 +363,83 @@ export type Database = {
           },
         ]
       }
+      rfqs: {
+        Row: {
+          created_at: string | null
+          created_by: string
+          description: string | null
+          id: string
+          status: string | null
+          tenant_id: string
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          created_by: string
+          description?: string | null
+          id?: string
+          status?: string | null
+          tenant_id: string
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          created_by?: string
+          description?: string | null
+          id?: string
+          status?: string | null
+          tenant_id?: string
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "rfqs_tenant_id_fkey"
+            columns: ["tenant_id"]
+            isOneToOne: false
+            referencedRelation: "tenants"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      talent_profiles: {
+        Row: {
+          availability: string | null
+          certifications: Json | null
+          created_at: string | null
+          experience_years: number | null
+          id: string
+          location: string | null
+          skills: string[] | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          availability?: string | null
+          certifications?: Json | null
+          created_at?: string | null
+          experience_years?: number | null
+          id?: string
+          location?: string | null
+          skills?: string[] | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          availability?: string | null
+          certifications?: Json | null
+          created_at?: string | null
+          experience_years?: number | null
+          id?: string
+          location?: string | null
+          skills?: string[] | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       tenants: {
         Row: {
           address: string | null
@@ -147,7 +478,34 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      me: {
+        Row: {
+          created_at: string | null
+          department: string | null
+          email: string | null
+          first_name: string | null
+          id: string | null
+          is_staff: boolean | null
+          last_name: string | null
+          phone: string | null
+          role: Database["public"]["Enums"]["user_role"] | null
+          status: string | null
+          tenant_id: string | null
+          tenant_name: string | null
+          tenant_slug: string | null
+          updated_at: string | null
+          user_id: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "profiles_tenant_id_fkey"
+            columns: ["tenant_id"]
+            isOneToOne: false
+            referencedRelation: "tenants"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Functions: {
       get_current_user_profile: {
