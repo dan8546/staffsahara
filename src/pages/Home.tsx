@@ -1,7 +1,7 @@
 import { Hero } from "@/components/Hero";
 import { Seo } from "@/components/Seo";
 
-const Index = () => {
+const Home = () => {
   return (
     <>
       <Seo />
@@ -12,4 +12,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Home;
