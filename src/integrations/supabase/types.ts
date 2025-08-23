@@ -482,7 +482,6 @@ export type Database = {
         Row: {
           created_at: string | null
           department: string | null
-          email: string | null
           first_name: string | null
           id: string | null
           is_staff: boolean | null
