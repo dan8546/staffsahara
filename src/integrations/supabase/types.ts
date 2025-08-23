@@ -386,6 +386,9 @@ export type Database = {
           created_by: string
           description: string | null
           id: string
+          profiles_json: Json | null
+          sites_json: Json | null
+          sla_json: Json | null
           status: string | null
           tenant_id: string
           title: string
@@ -397,6 +400,9 @@ export type Database = {
           created_by: string
           description?: string | null
           id?: string
+          profiles_json?: Json | null
+          sites_json?: Json | null
+          sla_json?: Json | null
           status?: string | null
           tenant_id: string
           title: string
@@ -408,6 +414,9 @@ export type Database = {
           created_by?: string
           description?: string | null
           id?: string
+          profiles_json?: Json | null
+          sites_json?: Json | null
+          sla_json?: Json | null
           status?: string | null
           tenant_id?: string
           title?: string

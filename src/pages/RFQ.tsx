@@ -178,15 +178,15 @@ const RFQ = () => {
       const rfqData = {
         tenant_id: profile?.tenant_id,
         title: `RFQ - ${new Date().toLocaleDateString()}`,
-        profiles_json: profiles,
-        sites_json: step2Data.sites.filter(s => s.trim()),
+        profiles_json: profiles as any,
+        sites_json: step2Data.sites.filter(s => s.trim()) as any,
         sla_json: {
           start_date: step2Data.start_date,
           rotation: step2Data.rotation,
           languages: step2Data.languages.filter(l => l.trim()),
           hse_reqs: step2Data.hse_reqs.filter(h => h.trim())
-        },
-        addons_json: step3Data,
+        } as any,
+        addons_json: step3Data as any,
         status: 'submitted',
         created_by: user?.id
       };
