@@ -105,34 +105,7 @@ export type Database = {
       }
     }
     Views: {
-      me: {
-        Row: {
-          created_at: string | null
-          department: string | null
-          email: string | null
-          first_name: string | null
-          id: string | null
-          is_staff: boolean | null
-          last_name: string | null
-          phone: string | null
-          role: Database["public"]["Enums"]["user_role"] | null
-          status: string | null
-          tenant_id: string | null
-          tenant_name: string | null
-          tenant_slug: string | null
-          updated_at: string | null
-          user_id: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "profiles_tenant_id_fkey"
-            columns: ["tenant_id"]
-            isOneToOne: false
-            referencedRelation: "tenants"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
+      [_ in never]: never
     }
     Functions: {
       get_current_user_profile: {
@@ -148,6 +121,26 @@ export type Database = {
           role: Database["public"]["Enums"]["user_role"]
           status: string | null
           tenant_id: string
+          updated_at: string
+          user_id: string
+        }[]
+      }
+      get_me: {
+        Args: Record<PropertyKey, never>
+        Returns: {
+          created_at: string
+          department: string
+          email: string
+          first_name: string
+          id: string
+          is_staff: boolean
+          last_name: string
+          phone: string
+          role: Database["public"]["Enums"]["user_role"]
+          status: string
+          tenant_id: string
+          tenant_name: string
+          tenant_slug: string
           updated_at: string
           user_id: string
         }[]
