@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Outlet } from "react-router-dom";
 import { useSession, UserRole } from "@/stores/useSession";
 import { Loader2 } from "lucide-react";
 
 interface RequireAuthProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   roles?: UserRole[];
   fallbackPath?: string;
 }
@@ -72,5 +72,5 @@ export const RequireAuth = ({
   }
 
   // All checks passed
-  return <>{children}</>;
+  return children ? <>{children}</> : <Outlet />;
 };

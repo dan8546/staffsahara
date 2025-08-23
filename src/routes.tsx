@@ -24,7 +24,8 @@ import Passport from "./pages/Passport";
 import Recruiting from "./pages/Recruiting";
 import AdminCandidates from "./pages/AdminCandidates";
 
-const PROTECTED: UserRole[] = ['client_admin', 'approver', 'ops', 'recruiter', 'finance', 'talent'];
+const BUSINESS_ROLES: UserRole[] = ['client_admin', 'approver', 'ops', 'recruiter', 'finance'];
+const ALL_PROTECTED: UserRole[] = ['client_admin', 'approver', 'ops', 'recruiter', 'finance', 'talent'];
 
 export const AppRoutes = () => (
   <Routes>
@@ -43,8 +44,13 @@ export const AppRoutes = () => (
 
     {/* PROTÉGÉ */}
     <Route element={<AppLayout />}>
-      <Route element={<RequireAuth roles={PROTECTED}><div /></RequireAuth>}>
+      {/* Business tools (no talent access) */}
+      <Route element={<RequireAuth roles={BUSINESS_ROLES} />}>
         <Route path="/rfq" element={<RFQ />} />
+      </Route>
+      
+      {/* All authenticated users */}
+      <Route element={<RequireAuth roles={ALL_PROTECTED} />}>
         <Route path="/missions" element={<Missions />} />
         <Route path="/missions/:id" element={<MissionDetail />} />
         <Route path="/passport" element={<Passport />} />
