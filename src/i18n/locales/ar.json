@@ -16,6 +16,29 @@
     "airQuote":"طلب عرض سعر Star Aviation", 
     "seeAviation":"اطلع على قدراتنا الجوية"
   },
+  "getQuote": {
+    "title": "طلب عرض سعر",
+    "subtitle": "صف احتياجاتك واحصل على اقتراح تجاري مخصص",
+    "form": {
+      "company": "الشركة",
+      "companyPlaceholder": "اسم شركتك",
+      "name": "جهة الاتصال",
+      "namePlaceholder": "الاسم الأول الاسم الأخير",
+      "email": "البريد الإلكتروني",
+      "emailPlaceholder": "your@email.com",
+      "phone": "الهاتف",
+      "phonePlaceholder": "+213 5 12 34 56 78",
+      "region": "الموقع / المنطقة",
+      "regionPlaceholder": "مثال: حاسي مسعود، أدرار...",
+      "summary": "ملخص الحاجة",
+      "summaryPlaceholder": "اوصف بإيجاز احتياجاتك في التوظيف...",
+      "starAviation": "ستار للطيران",
+      "billetterie": "التذاكر",
+      "submit": "إرسال الطلب",
+      "success": "تم إرسال طلبك بنجاح!",
+      "error": "حدث خطأ. يرجى المحاولة مرة أخرى."
+    }
+  },
   "hero": {
     "title":"خدمات الموارد البشرية والدعم الفني للمواقع المعزولة في الجنوب الكبير",
     "subtitle":"التوظيف والامتثال والدورات اللوجستية — منصة موحّدة مدعومة بتكاملات RedMed."

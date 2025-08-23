@@ -16,6 +16,29 @@
     "airQuote":"Request Star Aviation Quote", 
     "seeAviation":"See Our Aviation Capabilities"
   },
+  "getQuote": {
+    "title": "Request Quote",
+    "subtitle": "Describe your needs and receive a personalized commercial proposal",
+    "form": {
+      "company": "Company",
+      "companyPlaceholder": "Your company name",
+      "name": "Contact",
+      "namePlaceholder": "First Last",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "phone": "Phone",
+      "phonePlaceholder": "+213 5 12 34 56 78",
+      "region": "Site / Region",
+      "regionPlaceholder": "e.g. Hassi Messaoud, Adrar...",
+      "summary": "Need Summary",
+      "summaryPlaceholder": "Briefly describe your recruitment needs...",
+      "starAviation": "Star Aviation",
+      "billetterie": "Ticketing",
+      "submit": "Send Request",
+      "success": "Your request has been sent successfully!",
+      "error": "An error occurred. Please try again."
+    }
+  },
   "hero": {
     "title":"Technical & HR Support for Remote Sites in the Deep South",
     "subtitle":"Recruitment, compliance, rotations and logistics — a unified platform backed by RedMed synergies."

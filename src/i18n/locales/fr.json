@@ -16,6 +16,29 @@
     "airQuote":"Demander un devis Star Aviation", 
     "seeAviation":"Voir nos capacités aériennes"
   },
+  "getQuote": {
+    "title": "Demander un devis",
+    "subtitle": "Décrivez votre besoin et recevez une proposition commerciale personnalisée",
+    "form": {
+      "company": "Entreprise",
+      "companyPlaceholder": "Nom de votre entreprise",
+      "name": "Contact",
+      "namePlaceholder": "Prénom Nom",
+      "email": "Email",
+      "emailPlaceholder": "votre@email.com",
+      "phone": "Téléphone",
+      "phonePlaceholder": "+33 6 12 34 56 78",
+      "region": "Site / Région",
+      "regionPlaceholder": "Ex: Hassi Messaoud, Adrar...",
+      "summary": "Résumé du besoin",
+      "summaryPlaceholder": "Décrivez brièvement votre besoin en recrutement...",
+      "starAviation": "Star Aviation",
+      "billetterie": "Billetterie",
+      "submit": "Envoyer ma demande",
+      "success": "Votre demande a été envoyée avec succès !",
+      "error": "Une erreur est survenue. Veuillez réessayer."
+    }
+  },
   "hero": {
     "title":"Assistance technique & RH pour sites isolés du Grand Sud",
     "subtitle":"Recrutement, conformité, rotations et logistique — une plateforme unifiée adossée aux synergies RedMed."
