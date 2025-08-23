@@ -1,0 +1,67 @@
+{
+  "name": "Staff Sahara",
+  "short_name": "Staff Sahara",
+  "description": "Solutions RH Premium pour le Grand Sud algérien",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1A428A",
+  "theme_color": "#1A428A",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "fr",
+  "dir": "ltr",
+  "categories": ["business", "productivity"],
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png", 
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Demander un devis",
+      "short_name": "RFQ",
+      "description": "Demander un devis rapidement",
+      "url": "/rfq",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Offres d'emploi",
+      "short_name": "Jobs",
+      "description": "Consulter les offres d'emploi",
+      "url": "/jobs",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Mon passeport",
+      "short_name": "Passeport",
+      "description": "Accéder à mon profil candidat",
+      "url": "/passport",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshot-mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Staff Sahara sur mobile"
+    },
+    {
+      "src": "/screenshot-desktop.png", 
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Staff Sahara sur desktop"
+    }
+  ]
+}

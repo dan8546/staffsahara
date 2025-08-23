@@ -87,5 +87,15 @@
     "hq":"Sièges & bases : Adrar — Alger — Hassi Messaoud",
     "legal":"Mentions légales", 
     "privacy":"Confidentialité"
+  },
+  "offline": {
+    "title": "Connexion indisponible",
+    "description": "Vous êtes actuellement hors ligne. Veuillez vérifier votre connexion internet et réessayer.",
+    "retry": "Réessayer",
+    "home": "Retour à l'accueil",
+    "features_title": "Fonctionnalités hors ligne",
+    "feature1": "Consultation des pages visitées récemment",
+    "feature2": "Accès aux informations de contact",
+    "feature3": "Navigation entre les sections principales"
   }
 }

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://staff-sahara.com/en</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://staff-sahara.com/fr" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://staff-sahara.com/ar" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://staff-sahara.com/" />
+    <lastmod>2024-01-23T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://staff-sahara.com/en/rfq</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://staff-sahara.com/fr/rfq" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://staff-sahara.com/ar/rfq" />
+    <lastmod>2024-01-23T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://staff-sahara.com/en/jobs</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://staff-sahara.com/fr/jobs" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://staff-sahara.com/ar/jobs" />
+    <lastmod>2024-01-23T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://staff-sahara.com/en/about</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://staff-sahara.com/fr/about" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://staff-sahara.com/ar/about" />
+    <lastmod>2024-01-23T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://staff-sahara.com/en/recruiting</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://staff-sahara.com/fr/recruiting" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://staff-sahara.com/ar/recruiting" />
+    <lastmod>2024-01-23T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://staff-sahara.com/en/passport</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://staff-sahara.com/fr/passport" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://staff-sahara.com/ar/passport" />
+    <lastmod>2024-01-23T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://staff-sahara.com/en/missions</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://staff-sahara.com/fr/missions" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://staff-sahara.com/ar/missions" />
+    <lastmod>2024-01-23T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://staff-sahara.com/en/login</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://staff-sahara.com/fr/login" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://staff-sahara.com/ar/login" />
+    <lastmod>2024-01-23T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+</urlset>

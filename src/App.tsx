@@ -16,6 +16,7 @@ import Recruiting from "./pages/Recruiting";
 import AdminCandidates from "./pages/AdminCandidates";
 import About from "./pages/About";
 import Login from "./pages/Login";
+import Offline from "./pages/Offline";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +39,7 @@ const App = () => (
             <Route path="admin/candidates" element={<AdminCandidates />} />
             <Route path="about" element={<About />} />
             <Route path="login" element={<Login />} />
+            <Route path="offline" element={<Offline />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
