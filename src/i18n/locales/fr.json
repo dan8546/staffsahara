@@ -16,6 +16,46 @@
     "airQuote":"Demander un devis Star Aviation", 
     "seeAviation":"Voir nos capacités aériennes"
   },
+  "missions": {
+    "title": "Mes Missions",
+    "subtitle": "Gérez vos missions en cours et à venir",
+    "createFromRfq": "Créer depuis RFQ",
+    "newMission": "Nouvelle Mission",
+    "viewDetails": "Voir détails",
+    "edit": "Modifier", 
+    "status": {
+      "draft": "Brouillon",
+      "in_review": "En validation", 
+      "signed": "Signée",
+      "active": "Active",
+      "completed": "Terminée"
+    },
+    "table": {
+      "title": "Titre",
+      "site": "Site",
+      "status": "Statut",
+      "createdAt": "Créé le",
+      "actions": "Actions"
+    },
+    "filters": {
+      "all": "Tous",
+      "status": "Statut",
+      "site": "Site"
+    },
+    "emptyState": {
+      "title": "Aucune mission trouvée",
+      "description": "Commencez par créer votre première mission depuis un RFQ ou créez-en une nouvelle.",
+      "createFirst": "Créer ma première mission"
+    },
+    "createModal": {
+      "title": "Créer une mission depuis un RFQ", 
+      "selectRfq": "Sélectionner un RFQ",
+      "aviation": "Aviation",
+      "preview": "Aperçu",
+      "create": "Créer la mission",
+      "cancel": "Annuler"
+    }
+  },
   "public": {
     "banner": "Vous consultez la version publique — certaines fonctions nécessitent une connexion."
   },

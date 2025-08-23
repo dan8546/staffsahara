@@ -218,6 +218,9 @@ export type Database = {
           end_date: string | null
           id: string
           location: string | null
+          rfq_id: string | null
+          site: string | null
+          sla_json: Json | null
           start_date: string | null
           status: string | null
           tenant_id: string
@@ -231,6 +234,9 @@ export type Database = {
           end_date?: string | null
           id?: string
           location?: string | null
+          rfq_id?: string | null
+          site?: string | null
+          sla_json?: Json | null
           start_date?: string | null
           status?: string | null
           tenant_id: string
@@ -244,6 +250,9 @@ export type Database = {
           end_date?: string | null
           id?: string
           location?: string | null
+          rfq_id?: string | null
+          site?: string | null
+          sla_json?: Json | null
           start_date?: string | null
           status?: string | null
           tenant_id?: string
@@ -251,6 +260,13 @@ export type Database = {
           updated_at?: string | null
         }
         Relationships: [
+          {
+            foreignKeyName: "missions_rfq_id_fkey"
+            columns: ["rfq_id"]
+            isOneToOne: false
+            referencedRelation: "rfqs"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "missions_tenant_id_fkey"
             columns: ["tenant_id"]
@@ -365,6 +381,7 @@ export type Database = {
       }
       rfqs: {
         Row: {
+          addons_json: Json | null
           created_at: string | null
           created_by: string
           description: string | null
@@ -375,6 +392,7 @@ export type Database = {
           updated_at: string | null
         }
         Insert: {
+          addons_json?: Json | null
           created_at?: string | null
           created_by: string
           description?: string | null
@@ -385,6 +403,7 @@ export type Database = {
           updated_at?: string | null
         }
         Update: {
+          addons_json?: Json | null
           created_at?: string | null
           created_by?: string
           description?: string | null
