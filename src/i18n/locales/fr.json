@@ -1,0 +1,91 @@
+{
+  "brand": "Staff Sahara",
+  "nav": { 
+    "b2b":"Solutions B2B", 
+    "b2c":"Espace Talents", 
+    "about":"À propos", 
+    "rfq":"Demander un devis", 
+    "passport":"Mon passeport", 
+    "jobs":"Offres", 
+    "login":"Connexion" 
+  },
+  "cta": {
+    "getQuote":"Obtenir un devis", 
+    "createPassport":"Créer mon passeport", 
+    "viewMissions":"Voir mes missions",
+    "airQuote":"Demander un devis Star Aviation", 
+    "seeAviation":"Voir nos capacités aériennes"
+  },
+  "hero": {
+    "title":"Assistance technique & RH pour sites isolés du Grand Sud",
+    "subtitle":"Recrutement, conformité, rotations et logistique — une plateforme unifiée adossée aux synergies RedMed."
+  },
+  "capabilities": {
+    "staffing": { 
+      "title":"Staffing & Mission Control", 
+      "desc":"Du RFQ à la mission signée : documents, e-sign, SLA, visibilité." 
+    },
+    "compliance": { 
+      "title":"Conformité & HSE", 
+      "desc":"Passeports, certificats, médicaux : conformité by-design." 
+    },
+    "rotations": { 
+      "title":"Rotations & Logistique", 
+      "desc":"Planifiez rotations, travel et services de site avec nos BU." 
+    }
+  },
+  "synergies": {
+    "medical":"Assistance médicale 24/7",
+    "mobile":"Unités mobiles & bases de vie",
+    "energy":"Énergie temporaire",
+    "ict":"ICT & Datacenter",
+    "rrtc":"RRTC — Formation certifiante",
+    "starAviation": {
+      "title":"Star Aviation — Travail aérien",
+      "k1":"Transport de personnel (navettes) entre sites et hubs",
+      "k2":"Vols charters dédiés (Algérie ↔ Europe)",
+      "k3":"Vols à la demande (Algérie, Europe, Afrique)",
+      "k4":"Évacuation sanitaire 24/7",
+      "k5":"Assistance au sol & formalités",
+      "k6":"Maintenance agréée (Diamond, Textron)"
+    },
+    "siyaha": {
+      "title":"Ain Salah Siyaha — Billetterie",
+      "k1":"Émission de billets (Air Algérie et partenaires)",
+      "k2":"Optimisation d'itinéraires & changements",
+      "k3":"Support voyageurs corporate"
+    }
+  },
+  "rfq": {
+    "step1":"Profils & volumétrie", 
+    "step2":"Sites & SLA", 
+    "step3":"Add-ons & services",
+    "airlift":"Besoin Star Aviation (travail aérien)", 
+    "airlift_note":"Réservé aux clients sous contrat ; planifiez navettes/charters/medevac.",
+    "ticketing":"Billetterie (Ain Salah Siyaha)"
+  },
+  "about": {
+    "mission_title":"Qui sommes-nous ?",
+    "mission_body":"Filiale RH & assistance technique du groupe RedMed, née de l'Oil & Gas, experte des environnements désertiques. Nous combinons recrutement, conformité HSE et logistique terrain pour garantir la continuité des opérations.",
+    "services_title":"Nos services",
+    "services_list":["Head-hunting & recrutement", "RH & paie", "Formation (RRTC)", "Travel & visas"],
+    "zones_title":"Zones d'opérations — Grand Sud",
+    "team_title":"Notre équipe",
+    "cta":"Discutons de votre prochain site"
+  },
+  "faq": {
+    "q1":"Quelle est la différence entre RFQ et RFP ?",
+    "a1":"Le RFQ demande un prix pour un besoin défini ; le RFP attend une proposition détaillée.",
+    "q2":"Gérez-vous l'aviation ?",
+    "a2":"Oui, via Star Aviation (travail aérien : navettes, charters, medevac, sol, maintenance)."
+  },
+  "contact": { 
+    "title":"Parlons de votre besoin", 
+    "subtitle":"Décrivez votre site, vos profils et votre planning." 
+  },
+  "footer": {
+    "hq":"Sièges & bases : Adrar — Alger — Hassi Messaoud",
+    "legal":"Mentions légales", 
+    "privacy":"Confidentialité"
+  }
+}

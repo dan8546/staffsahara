@@ -1,0 +1,91 @@
+{
+  "brand": "Staff Sahara",
+  "nav": { 
+    "b2b":"B2B Solutions", 
+    "b2c":"Talent Hub", 
+    "about":"About", 
+    "rfq":"Request Quote", 
+    "passport":"My Passport", 
+    "jobs":"Jobs", 
+    "login":"Login" 
+  },
+  "cta": {
+    "getQuote":"Get Quote", 
+    "createPassport":"Create My Passport", 
+    "viewMissions":"View My Missions",
+    "airQuote":"Request Star Aviation Quote", 
+    "seeAviation":"See Our Aviation Capabilities"
+  },
+  "hero": {
+    "title":"Technical & HR Support for Remote Sites in the Deep South",
+    "subtitle":"Recruitment, compliance, rotations and logistics — a unified platform backed by RedMed synergies."
+  },
+  "capabilities": {
+    "staffing": { 
+      "title":"Staffing & Mission Control", 
+      "desc":"From RFQ to signed mission: documents, e-sign, SLA, visibility." 
+    },
+    "compliance": { 
+      "title":"Compliance & HSE", 
+      "desc":"Passports, certificates, medical: compliance by-design." 
+    },
+    "rotations": { 
+      "title":"Rotations & Logistics", 
+      "desc":"Plan rotations, travel and site services with our BU." 
+    }
+  },
+  "synergies": {
+    "medical":"24/7 Medical Assistance",
+    "mobile":"Mobile Units & Life Bases",
+    "energy":"Temporary Energy",
+    "ict":"ICT & Datacenter",
+    "rrtc":"RRTC — Certified Training",
+    "starAviation": {
+      "title":"Star Aviation — Aerial Work",
+      "k1":"Personnel transport (shuttles) between sites and hubs",
+      "k2":"Dedicated charter flights (Algeria ↔ Europe)",
+      "k3":"On-demand flights (Algeria, Europe, Africa)",
+      "k4":"24/7 Medical evacuation",
+      "k5":"Ground assistance & formalities",
+      "k6":"Approved maintenance (Diamond, Textron)"
+    },
+    "siyaha": {
+      "title":"Ain Salah Siyaha — Ticketing",
+      "k1":"Ticket issuance (Air Algérie and partners)",
+      "k2":"Route optimization & changes",
+      "k3":"Corporate traveler support"
+    }
+  },
+  "rfq": {
+    "step1":"Profiles & volumes", 
+    "step2":"Sites & SLA", 
+    "step3":"Add-ons & services",
+    "airlift":"Star Aviation needs (aerial work)", 
+    "airlift_note":"Reserved for contracted clients; plan shuttles/charters/medevac.",
+    "ticketing":"Ticketing (Ain Salah Siyaha)"
+  },
+  "about": {
+    "mission_title":"Who are we?",
+    "mission_body":"HR & technical assistance subsidiary of RedMed Group, born from Oil & Gas, expert in desert environments. We combine recruitment, HSE compliance and field logistics to ensure operational continuity.",
+    "services_title":"Our services",
+    "services_list":["Head-hunting & recruitment", "HR & payroll", "Training (RRTC)", "Travel & visas"],
+    "zones_title":"Operations zones — Deep South",
+    "team_title":"Our team",
+    "cta":"Let's discuss your next site"
+  },
+  "faq": {
+    "q1":"What's the difference between RFQ and RFP?",
+    "a1":"RFQ requests a price for a defined need; RFP expects a detailed proposal.",
+    "q2":"Do you manage aviation?",
+    "a2":"Yes, via Star Aviation (aerial work: shuttles, charters, medevac, ground, maintenance)."
+  },
+  "contact": { 
+    "title":"Let's talk about your needs", 
+    "subtitle":"Describe your site, profiles and schedule." 
+  },
+  "footer": {
+    "hq":"HQ & bases: Adrar — Algiers — Hassi Messaoud",
+    "legal":"Legal Notice", 
+    "privacy":"Privacy"
+  }
+}

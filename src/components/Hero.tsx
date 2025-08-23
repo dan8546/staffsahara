@@ -1,9 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/Logo";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import heroBg from "@/assets/hero-bg.jpg";
 
 export const Hero = () => {
+  const { t } = useTranslation();
+  
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
@@ -39,8 +42,7 @@ export const Hero = () => {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="text-5xl md:text-7xl font-bold text-paper-0 mb-6 leading-tight"
           >
-            Solutions RH
-            <span className="block text-brand-gold">Premium</span>
+            {t('hero.title')}
           </motion.h1>
           
           {/* Subtitle */}
@@ -50,8 +52,7 @@ export const Hero = () => {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="text-xl md:text-2xl text-paper-0/90 mb-12 leading-relaxed max-w-3xl mx-auto"
           >
-            Votre partenaire de confiance pour des solutions RH sur mesure dans la région MENA. 
-            Excellence, innovation et expertise au service de votre croissance.
+            {t('hero.subtitle')}
           </motion.p>
           
           {/* CTA Buttons */}
@@ -62,10 +63,10 @@ export const Hero = () => {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
             <Button variant="gold" size="lg" className="text-lg px-8 py-4 h-auto">
-              Découvrir nos services
+              {t('cta.getQuote')}
             </Button>
             <Button variant="outline" size="lg" className="text-lg px-8 py-4 h-auto border-paper-0 text-paper-0 hover:bg-paper-0 hover:text-brand-blue">
-              Nous contacter
+              {t('contact.title')}
             </Button>
           </motion.div>
         </motion.div>

@@ -119,6 +119,19 @@ All colors MUST be HSL. Brand colors: Blue (#1A428A) & Gold (#D79A2B)
   .logo-spacing {
     margin: calc(0.5 * var(--logo-height, 2rem));
   }
+  
+  /* RTL Support */
+  html[dir="rtl"] {
+    direction: rtl;
+  }
+
+  html[dir="rtl"] .font-sans {
+    font-family: "Tajawal", system-ui, sans-serif;
+  }
+
+  html[dir="ltr"] .font-ar {
+    font-family: "Montserrat", system-ui, sans-serif;
+  }
 }
 
 @keyframes fade-in {
