@@ -1,4 +1,6 @@
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import { useSession } from "@/stores/useSession";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -6,6 +8,16 @@ import { MapPin, Users, Award, Target } from "lucide-react";
 
 const About = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const { user, role } = useSession();
+  
+  const goToQuote = () => {
+    if (user && role && ['client_admin','approver','ops','recruiter','finance'].includes(role)) {
+      navigate('/rfq');
+    } else {
+      navigate('/get-quote');
+    }
+  };
 
   const zones = [
     { name: "Hassi Messaoud", type: "Base principale", status: "active" },
@@ -149,7 +161,7 @@ const About = () => {
           et vous proposer des solutions sur mesure.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" className="rounded-2xl shadow-soft focus:ring-4 ring-brand-gold/40">
+          <Button size="lg" className="rounded-2xl shadow-soft focus:ring-4 ring-brand-gold/40" onClick={goToQuote}>
             {t('cta.getQuote')}
           </Button>
           <Button variant="secondary" size="lg" className="rounded-2xl">

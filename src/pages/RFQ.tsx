@@ -1,9 +1,21 @@
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import { useSession } from "@/stores/useSession";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const RFQ = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const { user, role } = useSession();
+  
+  const goToQuote = () => {
+    if (user && role && ['client_admin','approver','ops','recruiter','finance'].includes(role)) {
+      navigate('/rfq');
+    } else {
+      navigate('/get-quote');
+    }
+  };
 
   return (
     <div className="container max-w-6xl mx-auto px-4 py-12">
@@ -61,7 +73,7 @@ const RFQ = () => {
       </div>
 
       <div className="text-center">
-        <Button size="lg" className="rounded-2xl shadow-soft focus:ring-4 ring-brand-gold/40">
+        <Button size="lg" className="rounded-2xl shadow-soft focus:ring-4 ring-brand-gold/40" onClick={goToQuote}>
           {t('cta.getQuote')}
         </Button>
       </div>

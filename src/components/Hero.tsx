@@ -2,10 +2,22 @@ import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/Logo";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import { useSession } from "@/stores/useSession";
 import heroBg from "@/assets/hero-bg.jpg";
 
 export const Hero = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const { user, role } = useSession();
+  
+  const goToQuote = () => {
+    if (user && role && ['client_admin','approver','ops','recruiter','finance'].includes(role)) {
+      navigate('/rfq');
+    } else {
+      navigate('/get-quote');
+    }
+  };
   
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -62,7 +74,7 @@ export const Hero = () => {
             transition={{ delay: 0.8, duration: 0.8 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <Button variant="gold" size="lg" className="text-lg px-8 py-4 h-auto">
+            <Button variant="gold" size="lg" className="text-lg px-8 py-4 h-auto" onClick={goToQuote}>
               {t('cta.getQuote')}
             </Button>
             <Button variant="outline" size="lg" className="text-lg px-8 py-4 h-auto border-paper-0 text-paper-0 hover:bg-paper-0 hover:text-brand-blue">

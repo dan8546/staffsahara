@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/Logo";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
@@ -19,8 +19,17 @@ import {
 export const Header = () => {
   const { t } = useTranslation();
   const location = useLocation();
-  const { user, profile, signOut } = useSession();
+  const navigate = useNavigate();
+  const { user, profile, role, signOut } = useSession();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const goToQuote = () => {
+    if (user && role && ['client_admin','approver','ops','recruiter','finance'].includes(role)) {
+      navigate('/rfq');
+    } else {
+      navigate('/get-quote');
+    }
+  };
 
   const navItems = [
     { key: "b2b", href: "/rfq" },
@@ -87,7 +96,7 @@ export const Header = () => {
                 </DropdownMenuContent>
               </DropdownMenu>
             ) : (
-              <Button variant="default" size="sm" className="rounded-2xl">
+              <Button variant="default" size="sm" className="rounded-2xl" onClick={goToQuote}>
                 {t('cta.getQuote')}
               </Button>
             )}
@@ -133,7 +142,14 @@ export const Header = () => {
               <Button 
                 variant="default" 
                 className="w-full rounded-2xl mt-2"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  if (user) {
+                    navigate('/passport');
+                  } else {
+                    goToQuote();
+                  }
+                }}
               >
                 {user ? 'Mon espace' : t('cta.getQuote')}
               </Button>
