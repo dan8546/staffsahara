@@ -221,6 +221,16 @@
       "cancel": "Cancel",
       "exportPdf": "Export PDF",
       "empty": "No aviation requests for this mission."
+    },
+    "compliance": {
+      "tab": "Compliance & RMTC",
+      "required": "Required certifications",
+      "propose": "Propose RMTC session",
+      "addCert": "Add certification",
+      "selectCerts": "Select required certifications", 
+      "proposeSessions": "Available RMTC sessions",
+      "noSessions": "No sessions available",
+      "enrolled": "Enrolled"
     }
   },
   "offline": {

@@ -98,6 +98,16 @@
       "cancel": "Annuler",
       "exportPdf": "Exporter PDF",
       "empty": "Aucune demande aérienne pour cette mission."
+    },
+    "compliance": {
+      "tab": "Conformité & RMTC",
+      "required": "Certifs requises",
+      "propose": "Proposer une session RMTC",
+      "addCert": "Ajouter certification",
+      "selectCerts": "Sélectionner les certifications requises",
+      "proposeSessions": "Sessions RMTC disponibles",
+      "noSessions": "Aucune session disponible",
+      "enrolled": "Inscrits"
     }
   },
   "public": {

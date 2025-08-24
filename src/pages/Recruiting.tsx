@@ -1,15 +1,89 @@
+import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { useSession } from "@/stores/useSession";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Users, Search, Target, CheckCircle } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Users, Search, Target, CheckCircle, Star, Award } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
+import { computeCoverage, updateApplicationScore } from "@/utils/compliance";
+
+interface Application {
+  id: string;
+  applicant_id: string;
+  opening_id: string;
+  status: string;
+  score: number;
+  applied_at: string;
+  openings: {
+    title: string;
+    location: string;
+  };
+}
 
 const Recruiting = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { user, role } = useSession();
+  const { toast } = useToast();
   
+  const [applications, setApplications] = useState<Application[]>([]);
+  const [loading, setLoading] = useState(true);
+  
+  const loadApplications = async () => {
+    try {
+      const { data, error } = await supabase
+        .from("applications")
+        .select(`*, openings(title, location)`)
+        .order("score", { ascending: false })
+        .limit(10);
+
+      if (error) throw error;
+      setApplications(data || []);
+    } catch (error) {
+      console.error("Error loading applications:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const updateApplicationWithScore = async (applicationId: string, talentId: string) => {
+    try {
+      const { data: certificates, error: certError } = await supabase
+        .from("certificates")
+        .select("course_code, issued_at, expires_at, issuer")
+        .eq("talent_id", talentId);
+
+      if (certError) throw certError;
+
+      const coverage = computeCoverage(certificates || [], ["H2S", "BOSIET", "FIRST_AID"]);
+      const newScore = updateApplicationScore(50, coverage);
+
+      const { error: updateError } = await supabase
+        .from("applications")
+        .update({ score: newScore })
+        .eq("id", applicationId);
+
+      if (updateError) throw updateError;
+
+      toast({
+        title: "Score mis à jour",
+        description: `Score: ${newScore}/100 (Couverture: ${coverage.coverage.toFixed(0)}%)`
+      });
+
+      await loadApplications();
+    } catch (error) {
+      console.error("Error updating score:", error);
+    }
+  };
+
+  useEffect(() => {
+    loadApplications();
+  }, []);
+
   const goToQuote = () => {
     if (user && role && ['client_admin','approver','ops','recruiter','finance'].includes(role)) {
       navigate('/rfq');
@@ -30,124 +104,119 @@ const Recruiting = () => {
       title: "Recrutement en volume",
       description: "Solutions de recrutement massif pour vos projets d'envergure",
       features: ["Processus optimisé", "Gestion des candidatures", "Onboarding structuré"]
-    },
-    {
-      icon: Target,
-      title: "Recrutement spécialisé",
-      description: "Expertise sectorielle pour les métiers techniques du pétrole et gaz",
-      features: ["Connaissance métier", "Réseau spécialisé", "Évaluation technique"]
-    },
-    {
-      icon: CheckCircle,
-      title: "Due diligence",
-      description: "Vérification complète des références et qualifications",
-      features: ["Background check", "Vérification diplômes", "Références employeurs"]
     }
   ];
 
   const stats = [
     { number: "500+", label: "Recrutements réussis" },
     { number: "50+", label: "Clients actifs" },
-    { number: "72h", label: "Délai moyen de sourcing" },
-    { number: "95%", label: "Taux de satisfaction" }
+    { number: "95%", label: "Taux de satisfaction" },
+    { number: "30j", label: "Délai moyen" }
   ];
+
+  if (loading) {
+    return (
+      <div className="container max-w-6xl mx-auto px-4 py-12">
+        <div className="flex items-center justify-center h-64">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-brand-blue"></div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="container max-w-6xl mx-auto px-4 py-12">
       <div className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold text-ink-900 mb-4">
-          Services de Recrutement
+        <h1 className="text-4xl font-bold text-ink-900 mb-4">
+          Recrutement & Talents
         </h1>
-        <p className="text-xl text-ink-700 max-w-3xl mx-auto">
-          Expertise RH dédiée aux métiers techniques du Grand Sud algérien
+        <p className="text-xl text-ink-600 max-w-3xl mx-auto">
+          Solutions de recrutement avec scoring automatique basé sur la conformité RMTC
         </p>
       </div>
 
-      {/* Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-        {stats.map((stat, index) => (
-          <div key={index} className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-brand-blue mb-2">
-              {stat.number}
-            </div>
-            <div className="text-sm text-ink-600">
-              {stat.label}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Services */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-        {services.map((service, index) => (
-          <Card key={index} className="hover:shadow-soft transition-all duration-300">
-            <CardHeader>
-              <div className="w-12 h-12 bg-brand-blue/10 rounded-2xl flex items-center justify-center mb-4">
-                <service.icon className="h-6 w-6 text-brand-blue" />
+      {/* Applications Scoring Section */}
+      {role && ['ops', 'recruiter', 'finance'].includes(role) && (
+        <Card className="mb-12">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Star className="h-5 w-5" />
+              Top Candidatures (Scoring RMTC)
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            {applications.length === 0 ? (
+              <div className="text-center py-8">
+                <Users className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
+                <p className="text-muted-foreground">Aucune candidature trouvée</p>
               </div>
-              <CardTitle className="text-brand-blue">{service.title}</CardTitle>
-              <CardDescription>{service.description}</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2 mb-4">
-                {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center gap-2 text-sm">
-                    <div className="w-1.5 h-1.5 bg-brand-gold rounded-full" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-              <Button variant="outline" className="w-full rounded-2xl">
-                En savoir plus
-              </Button>
+            ) : (
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Poste</TableHead>
+                    <TableHead>Score</TableHead>
+                    <TableHead>Statut</TableHead>
+                    <TableHead>Actions</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {applications.map((application) => (
+                    <TableRow key={application.id}>
+                      <TableCell className="font-medium">
+                        {application.openings.title}
+                      </TableCell>
+                      <TableCell>
+                        <div className="flex items-center gap-2">
+                          <Badge variant={application.score >= 80 ? "default" : "secondary"}>
+                            {application.score}/100
+                          </Badge>
+                          {application.score >= 80 && <Award className="h-4 w-4 text-yellow-500" />}
+                        </div>
+                      </TableCell>
+                      <TableCell>
+                        <Badge variant="outline">{application.status}</Badge>
+                      </TableCell>
+                      <TableCell>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => updateApplicationWithScore(application.id, application.applicant_id)}
+                        >
+                          Recalculer
+                        </Button>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            )}
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Stats & Services */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+        {stats.map((stat, index) => (
+          <Card key={index} className="text-center">
+            <CardContent className="pt-6">
+              <div className="text-3xl font-bold text-brand-blue mb-2">
+                {stat.number}
+              </div>
+              <p className="text-sm text-ink-600">{stat.label}</p>
             </CardContent>
           </Card>
         ))}
       </div>
 
-      {/* Process */}
-      <Card className="mb-16">
-        <CardHeader className="text-center">
-          <CardTitle className="text-brand-blue text-2xl">Notre Processus</CardTitle>
-          <CardDescription>Une approche structurée pour un recrutement réussi</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            {[
-              { step: "1", title: "Analyse du besoin", desc: "Définition précise du profil et des compétences requises" },
-              { step: "2", title: "Sourcing", desc: "Recherche active dans nos bases et réseaux spécialisés" },
-              { step: "3", title: "Évaluation", desc: "Tests techniques et entretiens comportementaux" },
-              { step: "4", title: "Présentation", desc: "Dossiers qualifiés avec recommandations détaillées" }
-            ].map((item, index) => (
-              <div key={index} className="text-center">
-                <div className="w-12 h-12 bg-brand-gold text-white rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-3">
-                  {item.step}
-                </div>
-                <h3 className="font-semibold text-ink-900 mb-2">{item.title}</h3>
-                <p className="text-sm text-ink-600">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* CTA */}
-      <div className="text-center bg-gradient-to-r from-brand-blue/10 to-brand-gold/10 rounded-2xl p-8">
-        <h2 className="text-2xl font-bold text-ink-900 mb-4">
-          Besoin de recruter ?
-        </h2>
-        <p className="text-ink-700 mb-6 max-w-2xl mx-auto">
-          Confiez-nous vos besoins en recrutement. Notre équipe d'experts vous accompagne 
-          de la définition du poste à l'intégration du candidat.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" className="rounded-2xl shadow-soft focus:ring-4 ring-brand-gold/40" onClick={goToQuote}>
-            {t('cta.getQuote')}
-          </Button>
-          <Button variant="secondary" size="lg" className="rounded-2xl">
-            Télécharger notre brochure
-          </Button>
-        </div>
+      <div className="text-center mt-16">
+        <Button 
+          size="lg" 
+          className="rounded-2xl shadow-soft"
+          onClick={goToQuote}
+        >
+          Demander un devis
+        </Button>
       </div>
     </div>
   );

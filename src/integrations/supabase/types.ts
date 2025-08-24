@@ -78,6 +78,7 @@ export type Database = {
           id: string
           opening_id: string
           resume_url: string | null
+          score: number | null
           status: string | null
           updated_at: string | null
         }
@@ -88,6 +89,7 @@ export type Database = {
           id?: string
           opening_id: string
           resume_url?: string | null
+          score?: number | null
           status?: string | null
           updated_at?: string | null
         }
@@ -98,6 +100,7 @@ export type Database = {
           id?: string
           opening_id?: string
           resume_url?: string | null
+          score?: number | null
           status?: string | null
           updated_at?: string | null
         }

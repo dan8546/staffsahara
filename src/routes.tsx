@@ -26,6 +26,7 @@ import AdminCandidates from "./pages/AdminCandidates";
 import Training from "./pages/Training";
 import TrainingDetail from "./pages/TrainingDetail";
 import MyTraining from "./pages/MyTraining";
+import AdminTraining from "./pages/AdminTraining";
 
 const BUSINESS_ROLES: UserRole[] = ['client_admin', 'approver', 'ops', 'recruiter', 'finance'];
 const ALL_PROTECTED: UserRole[] = ['client_admin', 'approver', 'ops', 'recruiter', 'finance', 'talent'];
@@ -61,6 +62,7 @@ export const AppRoutes = () => (
         <Route path="/passport" element={<Passport />} />
         <Route path="/recruiting" element={<Recruiting />} />
         <Route path="/admin/candidates" element={<AdminCandidates />} />
+        <Route path="/admin/training" element={<AdminTraining />} />
         <Route path="/training/my" element={<MyTraining />} />
       </Route>
     </Route>

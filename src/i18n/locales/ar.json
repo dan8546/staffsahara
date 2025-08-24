@@ -221,6 +221,16 @@
       "cancel": "إلغاء",
       "exportPdf": "تصدير PDF",
       "empty": "لا توجد طلبات طيران لهذه المهمة."
+    },
+    "compliance": {
+      "tab": "الامتثال و RMTC",
+      "required": "الشهادات المطلوبة",
+      "propose": "اقتراح جلسة RMTC",
+      "addCert": "إضافة شهادة",
+      "selectCerts": "اختر الشهادات المطلوبة",
+      "proposeSessions": "جلسات RMTC المتاحة",
+      "noSessions": "لا توجد جلسات متاحة",
+      "enrolled": "مسجلين"
     }
   },
   "offline": {

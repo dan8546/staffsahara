@@ -7,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ArrowLeft, MapPin, Calendar, User, FileText, Phone } from "lucide-react";
 import MissionDocuments from "@/components/MissionDocuments";
 import MissionAviation from "@/components/MissionAviation";
+import MissionCompliance from "@/components/MissionCompliance";
 
 const MissionDetail = () => {
   const { id } = useParams();
@@ -71,10 +72,11 @@ const MissionDetail = () => {
       </div>
 
       <Tabs defaultValue="overview" className="w-full">
-        <TabsList className="grid w-full grid-cols-3">
+        <TabsList className="grid w-full grid-cols-4">
           <TabsTrigger value="overview">Vue d'ensemble</TabsTrigger>
           <TabsTrigger value="documents">{t("missions.docs.title")}</TabsTrigger>
           <TabsTrigger value="aviation">{t("missions.aviation.tab")}</TabsTrigger>
+          <TabsTrigger value="compliance">{t("missions.compliance.tab")}</TabsTrigger>
         </TabsList>
         
         <TabsContent value="overview" className="space-y-6">
@@ -168,6 +170,10 @@ const MissionDetail = () => {
         
         <TabsContent value="aviation">
           <MissionAviation missionId={id!} />
+        </TabsContent>
+        
+        <TabsContent value="compliance">
+          <MissionCompliance missionId={id!} />
         </TabsContent>
       </Tabs>
     </div>
