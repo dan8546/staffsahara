@@ -4,11 +4,16 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, MapPin, Calendar, DollarSign, Building, User } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
+import { useSession } from "@/stores/useSession";
+import { computeCoverage } from "@/utils/compliance";
 
 const JobDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { user } = useSession();
 
   // Mock data - in real app, fetch by ID
   const job = {
@@ -44,8 +49,43 @@ Cette position offre une opportunité unique de travailler sur des projets d'env
       name: "Service Recrutement",
       email: "recrutement@redmed-energy.com",
       phone: "+213 29 XX XX XX"
+    },
+    required_certs: ["HSE_BASIC", "NEBOSH_IGC", "FIRST_AID"]
+  };
+
+  const handleApply = async () => {
+    if (!user) {
+      navigate('/login');
+      return;
+    }
+
+    try {
+      // Insert application
+      const { error } = await supabase
+        .from('applications')
+        .insert({
+          opening_id: id,
+          applicant_id: user.id,
+          status: 'submitted',
+          score: 0,
+          applied_at: new Date().toISOString()
+        });
+
+      if (error) throw error;
+
+      toast.success('Application submitted successfully!');
+      navigate('/training/my');
+    } catch (error) {
+      console.error('Error applying:', error);
+      toast.error('Error submitting application');
     }
   };
+
+  // Calculate compatibility if required certs exist
+  const compatibility = job.required_certs ? computeCoverage(
+    [], // Mock empty certificates - in real app, fetch user certificates
+    job.required_certs
+  ) : null;
 
   return (
     <div className="container max-w-6xl mx-auto px-4 py-12">
@@ -84,9 +124,21 @@ Cette position offre une opportunité unique de travailler sur des projets d'env
             </div>
           </div>
           <div className="flex flex-col gap-3 w-full lg:w-auto">
-            <Button size="lg" className="rounded-2xl shadow-soft focus:ring-4 ring-brand-gold/40">
-              Postuler maintenant
+            <Button 
+              size="lg" 
+              className="rounded-2xl shadow-soft focus:ring-4 ring-brand-gold/40"
+              onClick={handleApply}
+            >
+              {t('jobs.apply')}
             </Button>
+            {compatibility && (
+              <div className="text-center">
+                <span className="text-sm text-ink-600">{t('jobs.compat')}: </span>
+                <Badge variant={compatibility.coverage >= 80 ? "default" : "destructive"}>
+                  {Math.round(compatibility.coverage)}%
+                </Badge>
+              </div>
+            )}
             <Button variant="secondary" size="lg" className="rounded-2xl">
               Sauvegarder l'offre
             </Button>

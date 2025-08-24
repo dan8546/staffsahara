@@ -119,6 +119,19 @@
   },
   "jobs": {
     "title": "Offres d'emploi - Staff Sahara",
+    "apply": "Postuler",
+    "compat": "Compatibilité"
+  },
+  "reminders": {
+    "title": "Rappels RMTC",
+    "sessions": "Rappels sessions J-7",
+    "certs": "Rappels expirations J-30",
+    "send": "Envoyer rappel",
+    "notify": "Notifier"
+  },
+  "passport": {
+    "title": "Passeport Talent",
+    "save": "Enregistrer",
     "description": "Découvrez les opportunités d'emploi dans le Grand Sud algérien. Postes Oil & Gas, ingénierie, HSE et logistique."
   },
   "getQuote": {

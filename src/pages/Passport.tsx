@@ -1,11 +1,120 @@
+import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
 import { User, FileText, Shield, Calendar } from "lucide-react";
+import { Seo } from "@/components/Seo";
+import { supabase } from "@/integrations/supabase/client";
+import { useSession } from "@/stores/useSession";
+import { toast } from "sonner";
 
 const Passport = () => {
   const { t } = useTranslation();
+  const { user } = useSession();
+  const [profile, setProfile] = useState({
+    languages: [] as string[],
+    location: '',
+    availability: 'available',
+    skills: [] as string[],
+    experience_years: 0
+  });
+  const [certificates, setCertificates] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (user) {
+      loadProfile();
+      loadCertificates();
+    }
+  }, [user]);
+
+  const loadProfile = async () => {
+    try {
+      const { data } = await supabase
+        .from('talent_profiles')
+        .select('*')
+        .eq('user_id', user?.id)
+        .single();
+
+      if (data) {
+        setProfile({
+          languages: data.skills || [],
+          location: data.location || '',
+          availability: data.availability || 'available',
+          skills: data.skills || [],
+          experience_years: data.experience_years || 0
+        });
+      }
+    } catch (error) {
+      console.error('Error loading profile:', error);
+    }
+  };
+
+  const loadCertificates = async () => {
+    try {
+      const { data } = await supabase
+        .from('certificates')
+        .select('*')
+        .eq('talent_id', user?.id);
+
+      setCertificates(data || []);
+    } catch (error) {
+      console.error('Error loading certificates:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSave = async () => {
+    if (!user) return;
+
+    try {
+      const { error } = await supabase
+        .from('talent_profiles')
+        .upsert({
+          user_id: user.id,
+          location: profile.location,
+          availability: profile.availability,
+          skills: profile.skills,
+          experience_years: profile.experience_years
+        });
+
+      if (error) throw error;
+      toast.success('Profile saved successfully!');
+    } catch (error) {
+      console.error('Error saving profile:', error);
+      toast.error('Error saving profile');
+    }
+  };
+
+  const handleLanguageChange = (language: string, checked: boolean) => {
+    setProfile(prev => ({
+      ...prev,
+      languages: checked 
+        ? [...prev.languages, language]
+        : prev.languages.filter(l => l !== language)
+    }));
+  };
+
+  if (loading) {
+    return (
+      <div className="container mx-auto py-8">
+        <div className="animate-pulse">
+          <div className="h-8 bg-surface-muted rounded mb-4"></div>
+          <div className="space-y-4">
+            {[...Array(3)].map((_, i) => (
+              <div key={i} className="h-32 bg-surface-muted rounded"></div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   const mockProfile = {
     name: "John Doe",
@@ -35,12 +144,17 @@ const Passport = () => {
 
   return (
     <div className="container max-w-6xl mx-auto px-4 py-12">
+      <Seo 
+        title={`${t('passport.title')} - Staff Sahara`}
+        description={t('passport.description')}
+      />
+      
       <div className="text-center mb-8">
         <h1 className="text-4xl font-bold text-ink-900 mb-2">
-          {t('nav.passport')}
+          {t('passport.title')}
         </h1>
         <p className="text-xl text-ink-700">
-          Votre profil professionnel centralisé
+          {t('passport.description')}
         </p>
       </div>
 

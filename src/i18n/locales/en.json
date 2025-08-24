@@ -25,7 +25,9 @@
   },
   "jobs": {
     "title": "Job Offers - Staff Sahara",
-    "description": "Discover job opportunities in the Algerian Deep South. Oil & Gas, engineering, HSE and logistics positions."
+    "description": "Discover job opportunities in the Algerian Deep South. Oil & Gas, engineering, HSE and logistics positions.",
+    "apply": "Apply",
+    "compat": "Compatibility"
   },
   "getQuote": {
     "title": "Request Quote",
@@ -234,6 +236,17 @@
       "noSessions": "No sessions available",
       "enrolled": "Enrolled"
     }
+  },
+  "reminders": {
+    "title": "RMTC Reminders",
+    "sessions": "Session reminders D-7",
+    "certs": "Expiry reminders D-30", 
+    "send": "Send reminder",
+    "notify": "Notify"
+  },
+  "passport": {
+    "title": "Talent Passport",
+    "save": "Save"
   },
   "offline": {
     "title": "Connection unavailable",
