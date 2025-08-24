@@ -672,33 +672,7 @@ export type Database = {
       }
     }
     Views: {
-      me: {
-        Row: {
-          created_at: string | null
-          department: string | null
-          first_name: string | null
-          id: string | null
-          is_staff: boolean | null
-          last_name: string | null
-          phone: string | null
-          role: Database["public"]["Enums"]["user_role"] | null
-          status: string | null
-          tenant_id: string | null
-          tenant_name: string | null
-          tenant_slug: string | null
-          updated_at: string | null
-          user_id: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "profiles_tenant_id_fkey"
-            columns: ["tenant_id"]
-            isOneToOne: false
-            referencedRelation: "tenants"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
+      [_ in never]: never
     }
     Functions: {
       get_current_user_profile: {
