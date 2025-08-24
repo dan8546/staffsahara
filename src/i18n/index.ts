@@ -33,6 +33,13 @@ const updateDirection = (lng: string) => {
   const dir = lng === 'ar' ? 'rtl' : 'ltr';
   document.documentElement.dir = dir;
   document.documentElement.lang = lng;
+  
+  // Update CSS variables for RTL
+  if (dir === 'rtl') {
+    document.documentElement.classList.add('rtl');
+  } else {
+    document.documentElement.classList.remove('rtl');
+  }
 };
 
 i18n.on('languageChanged', updateDirection);
