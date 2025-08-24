@@ -138,6 +138,74 @@ export type Database = {
         }
         Relationships: []
       }
+      certificates: {
+        Row: {
+          course_code: string | null
+          created_at: string | null
+          expires_at: string | null
+          file_url: string | null
+          id: string
+          issued_at: string | null
+          issuer: string | null
+          talent_id: string | null
+        }
+        Insert: {
+          course_code?: string | null
+          created_at?: string | null
+          expires_at?: string | null
+          file_url?: string | null
+          id?: string
+          issued_at?: string | null
+          issuer?: string | null
+          talent_id?: string | null
+        }
+        Update: {
+          course_code?: string | null
+          created_at?: string | null
+          expires_at?: string | null
+          file_url?: string | null
+          id?: string
+          issued_at?: string | null
+          issuer?: string | null
+          talent_id?: string | null
+        }
+        Relationships: []
+      }
+      enrollments: {
+        Row: {
+          created_at: string | null
+          id: string
+          session_id: string | null
+          source: string | null
+          status: string | null
+          talent_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          session_id?: string | null
+          source?: string | null
+          status?: string | null
+          talent_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          session_id?: string | null
+          source?: string | null
+          status?: string | null
+          talent_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "enrollments_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "training_sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       leads: {
         Row: {
           company: string
@@ -530,6 +598,77 @@ export type Database = {
           updated_at?: string
         }
         Relationships: []
+      }
+      training_courses: {
+        Row: {
+          code: string
+          created_at: string | null
+          description: string | null
+          duration_hours: number | null
+          id: string
+          reqs: Json | null
+          title: string
+        }
+        Insert: {
+          code: string
+          created_at?: string | null
+          description?: string | null
+          duration_hours?: number | null
+          id?: string
+          reqs?: Json | null
+          title: string
+        }
+        Update: {
+          code?: string
+          created_at?: string | null
+          description?: string | null
+          duration_hours?: number | null
+          id?: string
+          reqs?: Json | null
+          title?: string
+        }
+        Relationships: []
+      }
+      training_sessions: {
+        Row: {
+          capacity: number | null
+          course_id: string | null
+          created_at: string | null
+          ends_at: string | null
+          id: string
+          location: string | null
+          starts_at: string | null
+          status: string | null
+        }
+        Insert: {
+          capacity?: number | null
+          course_id?: string | null
+          created_at?: string | null
+          ends_at?: string | null
+          id?: string
+          location?: string | null
+          starts_at?: string | null
+          status?: string | null
+        }
+        Update: {
+          capacity?: number | null
+          course_id?: string | null
+          created_at?: string | null
+          ends_at?: string | null
+          id?: string
+          location?: string | null
+          starts_at?: string | null
+          status?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "training_sessions_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "training_courses"
+            referencedColumns: ["id"]
+          },
+        ]
       }
     }
     Views: {

@@ -23,6 +23,9 @@ import MissionDetail from "./pages/MissionDetail";
 import Passport from "./pages/Passport";
 import Recruiting from "./pages/Recruiting";
 import AdminCandidates from "./pages/AdminCandidates";
+import Training from "./pages/Training";
+import TrainingDetail from "./pages/TrainingDetail";
+import MyTraining from "./pages/MyTraining";
 
 const BUSINESS_ROLES: UserRole[] = ['client_admin', 'approver', 'ops', 'recruiter', 'finance'];
 const ALL_PROTECTED: UserRole[] = ['client_admin', 'approver', 'ops', 'recruiter', 'finance', 'talent'];
@@ -36,6 +39,8 @@ export const AppRoutes = () => (
       <Route path="/jobs" element={<Jobs />} />
       <Route path="/jobs/:id" element={<JobDetail />} />
       <Route path="/get-quote" element={<GetQuotePublic />} />
+      <Route path="/training" element={<Training />} />
+      <Route path="/training/:id" element={<TrainingDetail />} />
       <Route path="/offline" element={<Offline />} />
       <Route path="/unauthorized" element={<Unauthorized />} />
       <Route path="/login" element={<Auth />} />
@@ -56,6 +61,7 @@ export const AppRoutes = () => (
         <Route path="/passport" element={<Passport />} />
         <Route path="/recruiting" element={<Recruiting />} />
         <Route path="/admin/candidates" element={<AdminCandidates />} />
+        <Route path="/training/my" element={<MyTraining />} />
       </Route>
     </Route>
 

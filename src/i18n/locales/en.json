@@ -140,6 +140,28 @@
     "cta_propose": "Propose an RMTC session",
     "badge_certified": "RMTC-OK"
   },
+  "training": {
+    "title": "Training & Certifications (RMTC)",
+    "browse": "Discover your training path.",
+    "enroll": "Enroll",
+    "sessions": "Upcoming sessions",
+    "duration": "Duration (h)",
+    "prereqs": "Prerequisites",
+    "my": "My trainings",
+    "enrollments": "My enrollments",
+    "certificates": "My certificates",
+    "upload": "Upload external certificate",
+    "status": {
+      "pending": "Pending",
+      "confirmed": "Confirmed",
+      "attended": "Attended",
+      "no_show": "No show",
+      "cancelled": "Cancelled"
+    },
+    "empty": "No training available",
+    "noSessions": "No sessions scheduled",
+    "selectSession": "Select a session"
+  },
   "faq": {
     "q1":"What's the difference between RFQ and RFP?",
     "a1":"RFQ requests a price for a defined need; RFP expects a detailed proposal.",

@@ -35,6 +35,7 @@ export const Header = () => {
     { key: "b2b", href: "/rfq" },
     { key: "b2c", href: "/jobs" },
     { key: "about", href: "/about" },
+    { key: "training", label: "RMTC", href: "/training" },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -61,7 +62,7 @@ export const Header = () => {
                     : "text-ink-700"
                 )}
               >
-                {t(`nav.${item.key}`)}
+                {item.label || t(`nav.${item.key}`)}
               </Link>
             ))}
           </nav>
@@ -88,6 +89,11 @@ export const Header = () => {
                   <DropdownMenuItem asChild>
                     <Link to="/passport">Mon profil</Link>
                   </DropdownMenuItem>
+                  {role === 'talent' && (
+                    <DropdownMenuItem asChild>
+                      <Link to="/training/my">Mes formations</Link>
+                    </DropdownMenuItem>
+                  )}
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={signOut} className="text-red-600">
                     <LogOut className="h-4 w-4 mr-2" />
@@ -136,7 +142,7 @@ export const Header = () => {
                       : "text-ink-700"
                   )}
                 >
-                  {t(`nav.${item.key}`)}
+                  {item.label || t(`nav.${item.key}`)}
                 </Link>
               ))}
               <Button 
