@@ -59,7 +59,9 @@
       "title":"Staffing & Mission Control", 
       "desc":"From RFQ to signed mission: documents, e-sign, SLA, visibility." 
     },
-    "compliance": { 
+    "docs": { "title": "Documents" },
+    "aviation": { "tab": "Star Aviation" },
+    "compliance": {
       "title":"Compliance & HSE", 
       "desc":"Passports, certificates, medical: compliance by-design." 
     },
