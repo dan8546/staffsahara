@@ -73,7 +73,7 @@
     "mobile":"Mobile Units & Life Bases",
     "energy":"Temporary Energy",
     "ict":"ICT & Datacenter",
-    "rrtc":"RRTC — Certified Training",
+    "rmtc":"RMTC — RedMed Training Center",
     "starAviation": {
       "title":"Star Aviation — Aerial Work",
       "k1":"Personnel transport (shuttles) between sites and hubs",
@@ -127,10 +127,18 @@
     "mission_title":"Who are we?",
     "mission_body":"HR & technical assistance subsidiary of RedMed Group, born from Oil & Gas, expert in desert environments. We combine recruitment, HSE compliance and field logistics to ensure operational continuity.",
     "services_title":"Our services",
-    "services_list":["Head-hunting & recruitment", "HR & payroll", "Training (RRTC)", "Travel & visas"],
+    "services_list":["Head-hunting & recruitment", "HR & payroll", "Training & Certifications (RMTC)", "Travel & visas"],
     "zones_title":"Operations zones — Deep South",
     "team_title":"Our team",
     "cta":"Let's discuss your next site"
+  },
+  "rmtc": {
+    "catalog_title": "Training & Certifications (RMTC)",
+    "catalog_subtitle": "Build your employability and maintain team compliance with RedMed Training Center.",
+    "cta_view": "View trainings",
+    "cta_register": "Register",
+    "cta_propose": "Propose an RMTC session",
+    "badge_certified": "RMTC-OK"
   },
   "faq": {
     "q1":"What's the difference between RFQ and RFP?",

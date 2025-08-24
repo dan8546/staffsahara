@@ -71,7 +71,7 @@ const About = () => {
           {t('about.services_title')}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {["Head-hunting & recrutement", "RH & paie", "Formation (RRTC)", "Travel & visas"].map((service: string, index: number) => (
+          {(t('about.services_list', { returnObjects: true }) as string[]).map((service: string, index: number) => (
             <Card key={index} className="text-center hover:shadow-soft transition-all duration-300">
               <CardContent className="pt-6">
                 <div className="w-12 h-12 bg-brand-blue/10 rounded-2xl flex items-center justify-center mx-auto mb-4">

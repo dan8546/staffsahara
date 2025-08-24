@@ -21,7 +21,7 @@ export const Footer = () => {
     { icon: Stethoscope, name: "Medical", color: "text-red-500" },
     { icon: Zap, name: "Energy", color: "text-yellow-500" },
     { icon: Server, name: "ICT", color: "text-blue-500" },
-    { icon: GraduationCap, name: "RRTC", color: "text-green-500" },
+    { icon: GraduationCap, name: "RMTC", color: "text-green-500" },
   ];
 
   return (
