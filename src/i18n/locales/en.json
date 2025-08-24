@@ -155,6 +155,52 @@
     "legal":"Legal Notice", 
     "privacy":"Privacy"
   },
+  "missions": {
+    "docs": {
+      "title": "Documents",
+      "upload": "Upload",
+      "kind": "Type",
+      "kinds": {
+        "sla": "SLA",
+        "hse": "HSE",
+        "contract": "Contract",
+        "other": "Other"
+      },
+      "replace": "Replace (version++)",
+      "download": "Download",
+      "delete": "Delete",
+      "empty": "No documents for this mission."
+    },
+    "aviation": {
+      "tab": "Star Aviation",
+      "create": "Create Request",
+      "kind": "Type",
+      "kinds": {
+        "air_personnel": "Personnel Shuttle",
+        "air_charter": "Dedicated Charter",
+        "air_ondemand": "On-demand Flight",
+        "air_medevac": "Medical Evacuation",
+        "air_ground": "Ground Assistance",
+        "air_mro": "Maintenance"
+      },
+      "pax": "Pax",
+      "site": "Site",
+      "legs": "Route",
+      "addLeg": "+ Leg",
+      "from": "From",
+      "to": "To",
+      "date": "Date",
+      "timeWindow": "Time Window",
+      "dangerous": "Dangerous Goods",
+      "medevac": "Medevac Level",
+      "ground": "Ground Services",
+      "send": "Send",
+      "confirm": "Confirm",
+      "cancel": "Cancel",
+      "exportPdf": "Export PDF",
+      "empty": "No aviation requests for this mission."
+    }
+  },
   "offline": {
     "title": "Connection unavailable",
     "description": "You are currently offline. Please check your internet connection and try again.",

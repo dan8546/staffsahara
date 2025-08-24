@@ -19,8 +19,13 @@ export type Database = {
           created_at: string | null
           created_by: string
           details: Json | null
+          extra: Json | null
           id: string
+          kind: string | null
+          pax_count: number | null
           request_type: string
+          route: Json | null
+          site: string | null
           status: string | null
           tenant_id: string
           updated_at: string | null
@@ -29,8 +34,13 @@ export type Database = {
           created_at?: string | null
           created_by: string
           details?: Json | null
+          extra?: Json | null
           id?: string
+          kind?: string | null
+          pax_count?: number | null
           request_type: string
+          route?: Json | null
+          site?: string | null
           status?: string | null
           tenant_id: string
           updated_at?: string | null
@@ -39,8 +49,13 @@ export type Database = {
           created_at?: string | null
           created_by?: string
           details?: Json | null
+          extra?: Json | null
           id?: string
+          kind?: string | null
+          pax_count?: number | null
           request_type?: string
+          route?: Json | null
+          site?: string | null
           status?: string | null
           tenant_id?: string
           updated_at?: string | null
@@ -169,29 +184,41 @@ export type Database = {
         Row: {
           created_at: string | null
           file_path: string
+          file_size: number | null
           filename: string
           id: string
+          kind: string | null
+          mime_type: string | null
           mission_id: string
           tenant_id: string
           uploaded_by: string
+          version: number | null
         }
         Insert: {
           created_at?: string | null
           file_path: string
+          file_size?: number | null
           filename: string
           id?: string
+          kind?: string | null
+          mime_type?: string | null
           mission_id: string
           tenant_id: string
           uploaded_by: string
+          version?: number | null
         }
         Update: {
           created_at?: string | null
           file_path?: string
+          file_size?: number | null
           filename?: string
           id?: string
+          kind?: string | null
+          mime_type?: string | null
           mission_id?: string
           tenant_id?: string
           uploaded_by?: string
+          version?: number | null
         }
         Relationships: [
           {

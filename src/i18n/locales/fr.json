@@ -54,6 +54,50 @@
       "preview": "Aperçu",
       "create": "Créer la mission",
       "cancel": "Annuler"
+    },
+    "docs": {
+      "title": "Documents",
+      "upload": "Téléverser",
+      "kind": "Type",
+      "kinds": {
+        "sla": "SLA",
+        "hse": "HSE",
+        "contract": "Contrat",
+        "other": "Autre"
+      },
+      "replace": "Remplacer (version++)",
+      "download": "Télécharger",
+      "delete": "Supprimer",
+      "empty": "Aucun document pour cette mission."
+    },
+    "aviation": {
+      "tab": "Star Aviation",
+      "create": "Créer une demande",
+      "kind": "Type",
+      "kinds": {
+        "air_personnel": "Navettes personnel",
+        "air_charter": "Charter dédié",
+        "air_ondemand": "Vol à la demande",
+        "air_medevac": "Évacuation sanitaire",
+        "air_ground": "Assistance au sol",
+        "air_mro": "Maintenance"
+      },
+      "pax": "Pax",
+      "site": "Site",
+      "legs": "Itinéraire",
+      "addLeg": "+ Jambe",
+      "from": "De",
+      "to": "Vers",
+      "date": "Date",
+      "timeWindow": "Créneau",
+      "dangerous": "Marchandises dangereuses",
+      "medevac": "Niveau medevac",
+      "ground": "Services sol",
+      "send": "Envoyer",
+      "confirm": "Confirmer",
+      "cancel": "Annuler",
+      "exportPdf": "Exporter PDF",
+      "empty": "Aucune demande aérienne pour cette mission."
     }
   },
   "public": {
