@@ -8,6 +8,9 @@ interface SeoProps {
   image?: string;
   type?: string;
   noindex?: boolean;
+  lang?: string;
+  alternateHreflangs?: Array<{ hrefLang: string; href: string }>;
+  jsonld?: object;
 }
 
 export const Seo = ({
@@ -16,12 +19,15 @@ export const Seo = ({
   canonical,
   image = "/og-image.jpg",
   type = "website",
-  noindex = false
+  noindex = false,
+  lang,
+  alternateHreflangs,
+  jsonld
 }: SeoProps) => {
   const { i18n } = useTranslation();
   
   const baseUrl = "https://staff-sahara.com";
-  const currentLang = i18n.language;
+  const currentLang = lang || i18n.language;
   
   // Default values
   const defaultTitle = "Staff Sahara - Solutions RH Premium";
@@ -32,12 +38,12 @@ export const Seo = ({
   const finalCanonical = canonical || `${baseUrl}${window.location.pathname}`;
   const finalImage = image.startsWith('http') ? image : `${baseUrl}${image}`;
 
-  // Generate hreflang URLs
-  const hreflangs = [
-    { lang: 'fr', url: finalCanonical.replace(`/${currentLang}`, '/fr') },
-    { lang: 'en', url: finalCanonical.replace(`/${currentLang}`, '/en') },
-    { lang: 'ar', url: finalCanonical.replace(`/${currentLang}`, '/ar') },
-    { lang: 'x-default', url: finalCanonical.replace(`/${currentLang}`, '') }
+  // Generate hreflang URLs - use provided alternates or generate defaults
+  const hreflangs = alternateHreflangs || [
+    { hrefLang: 'fr', href: finalCanonical.replace(`/${currentLang}`, '/fr') },
+    { hrefLang: 'en', href: finalCanonical.replace(`/${currentLang}`, '/en') },
+    { hrefLang: 'ar', href: finalCanonical.replace(`/${currentLang}`, '/ar') },
+    { hrefLang: 'x-default', href: finalCanonical.replace(`/${currentLang}`, '') }
   ];
 
   return (
@@ -49,8 +55,8 @@ export const Seo = ({
       <link rel="canonical" href={finalCanonical} />
       
       {/* Language Alternates */}
-      {hreflangs.map(({ lang, url }) => (
-        <link key={lang} rel="alternate" hrefLang={lang} href={url} />
+      {hreflangs.map(({ hrefLang, href }) => (
+        <link key={hrefLang} rel="alternate" hrefLang={hrefLang} href={href} />
       ))}
       
       {/* Open Graph */}
@@ -113,6 +119,13 @@ export const Seo = ({
           }
         })}
       </script>
+      
+      {/* Custom JSON-LD */}
+      {jsonld && (
+        <script type="application/ld+json">
+          {JSON.stringify(jsonld)}
+        </script>
+      )}
     </Helmet>
   );
 };

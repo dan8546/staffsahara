@@ -113,10 +113,6 @@
   "public": {
     "banner": "Vous consultez la version publique — certaines fonctions nécessitent une connexion."
   },
-  "about": {
-    "title": "À propos de Staff Sahara",
-    "description": "Staff Sahara, leader du recrutement dans le secteur pétrolier algérien. Solutions RH sur mesure pour l'industrie Oil & Gas."
-  },
   "jobs": {
     "title": "Offres d'emploi - Staff Sahara",
     "apply": "Postuler",
@@ -133,6 +129,39 @@
     "title": "Passeport Talent",
     "save": "Enregistrer",
     "description": "Découvrez les opportunités d'emploi dans le Grand Sud algérien. Postes Oil & Gas, ingénierie, HSE et logistique."
+  },
+  "about": {
+    "title": "À propos de Staff Sahara", 
+    "subtitle": "Solutions RH & logistique ancrées dans le Grand Sud — au service de l'énergie, de l'ICT et des industries.",
+    "description": "Staff Sahara, leader du recrutement pour le secteur pétrolier algérien. Solutions RH sur mesure pour l'industrie Oil & Gas.",
+    "rmtc_block_title": "RMTC — RedMed Training Center",
+    "rmtc_block_text": "Formations & certifications (H2S, BOSIET, Secourisme, recyclages périodiques) pour renforcer l'employabilité des talents et garantir la conformité des missions.",
+    "cta_training": "Voir les formations",
+    "values_title": "Ce qui nous guide",
+    "values": ["Sécurité & conformité", "Exécution terrain", "Transparence & KPI"],
+    "mission_title": "Mission de Staff Sahara",
+    "mission_body": "Nous accompagnons les entreprises du secteur énergétique avec des solutions RH complètes et une expertise terrain reconnue.",
+    "services_title": "Nos services", 
+    "services_list": ["Recrutement spécialisé", "Formation RMTC", "Logistique industrielle", "Conseil RH"],
+    "zones_title": "Zones d'intervention",
+    "team_title": "Notre équipe",
+    "cta": "Prêt à démarrer votre projet ?"
+  },
+  "seo": {
+    "training_title": "Formations RMTC — RedMed Training Center",
+    "training_desc": "Catalogue officiel RMTC : H2S, BOSIET, Secourisme… Sessions à venir, certificats et recyclages.",
+    "course_title": "Formation {{code}} — {{title}} | RMTC",
+    "course_desc": "Programme {{title}} ({{code}}), durée {{hours}}h — sessions à venir à {{location}}."
+  },
+  "analytics": {
+    "title": "Analytics RMTC",
+    "kpis": {
+      "courses": "Cours",
+      "upcoming": "Sessions à venir", 
+      "enroll_30d": "Inscriptions (30j)",
+      "certs_30d": "Certificats (30j)"
+    },
+    "top_courses": "Top cours (30j)"
   },
   "getQuote": {
     "title": "Demander un devis",
@@ -229,15 +258,6 @@
     "helpers": {
       "rotation":"Ex.: 14/14 ou 28/28"
     }
-  },
-  "about": {
-    "mission_title":"Qui sommes-nous ?",
-    "mission_body":"Filiale RH & assistance technique du groupe RedMed, née de l'Oil & Gas, experte des environnements désertiques. Nous combinons recrutement, conformité HSE et logistique terrain pour garantir la continuité des opérations.",
-    "services_title":"Nos services",
-    "services_list":["Head-hunting & recrutement", "RH & paie", "Formations & Certifications (RMTC)", "Travel & visas"],
-    "zones_title":"Zones d'opérations — Grand Sud",
-    "team_title":"Notre équipe",
-    "cta":"Discutons de votre prochain site"
   },
   "rmtc": {
     "catalog_title": "Formations & Certifications (RMTC)",

@@ -21,7 +21,29 @@
   },
   "about": {
     "title": "About Staff Sahara",
-    "description": "Staff Sahara, leader in recruitment for the Algerian oil sector. Tailor-made HR solutions for the Oil & Gas industry."
+    "subtitle": "HR & logistics solutions anchored in the Deep South — serving energy, ICT and industries.",
+    "description": "Staff Sahara, leader in recruitment for the Algerian oil sector. Tailor-made HR solutions for the Oil & Gas industry.",
+    "rmtc_block_title": "RMTC — RedMed Training Center",
+    "rmtc_block_text": "Training & certifications (H2S, BOSIET, First Aid, periodic recycling) to strengthen talent employability and guarantee mission compliance.",
+    "cta_training": "View training courses",
+    "values_title": "What guides us",
+    "values": ["Safety & compliance", "Field execution", "Transparency & KPIs"]
+  },
+  "seo": {
+    "training_title": "RMTC Training — RedMed Training Center",
+    "training_desc": "Official RMTC catalog: H2S, BOSIET, First Aid... Upcoming sessions, certificates and recycling.",
+    "course_title": "Training {{code}} — {{title}} | RMTC",
+    "course_desc": "Program {{title}} ({{code}}), duration {{hours}}h — upcoming sessions in {{location}}."
+  },
+  "analytics": {
+    "title": "RMTC Analytics",
+    "kpis": {
+      "courses": "Courses",
+      "upcoming": "Upcoming sessions",
+      "enroll_30d": "Enrollments (30d)",
+      "certs_30d": "Certificates (30d)"
+    },
+    "top_courses": "Top courses (30d)"
   },
   "jobs": {
     "title": "Job Offers - Staff Sahara",
