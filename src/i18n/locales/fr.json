@@ -131,21 +131,39 @@
     "description": "Découvrez les opportunités d'emploi dans le Grand Sud algérien. Postes Oil & Gas, ingénierie, HSE et logistique."
   },
   "about": {
-    "title": "À propos de Staff Sahara", 
+    "title": "À propos de Staff Sahara",
     "subtitle": "Solutions RH & logistique ancrées dans le Grand Sud — au service de l'énergie, de l'ICT et des industries.",
-    "description": "Staff Sahara, leader du recrutement pour le secteur pétrolier algérien. Solutions RH sur mesure pour l'industrie Oil & Gas.",
-    "rmtc_block_title": "RMTC — RedMed Training Center",
-    "rmtc_block_text": "Formations & certifications (H2S, BOSIET, Secourisme, recyclages périodiques) pour renforcer l'employabilité des talents et garantir la conformité des missions.",
-    "cta_training": "Voir les formations",
-    "values_title": "Ce qui nous guide",
-    "values": ["Sécurité & conformité", "Exécution terrain", "Transparence & KPI"],
-    "mission_title": "Mission de Staff Sahara",
-    "mission_body": "Nous accompagnons les entreprises du secteur énergétique avec des solutions RH complètes et une expertise terrain reconnue.",
-    "services_title": "Nos services", 
-    "services_list": ["Recrutement spécialisé", "Formation RMTC", "Logistique industrielle", "Conseil RH"],
-    "zones_title": "Zones d'intervention",
-    "team_title": "Notre équipe",
-    "cta": "Prêt à démarrer votre projet ?"
+    "cta_quote": "Obtenir un devis",
+    "cta_training": "Voir nos formations RMTC",
+    "values_title": "Nos engagements",
+    "values": [
+      { "title": "Sécurité & conformité", "text": "Priorité absolue à la sécurité, conformité HSE et traçabilité des opérations." },
+      { "title": "Exécution terrain", "text": "Process robustes, rotations maîtrisées, reporting clair, délais tenus." },
+      { "title": "Transparence & KPI", "text": "Suivi temps réel, indicateurs partagés, amélioration continue." }
+    ],
+    "sectors_title": "Secteurs que nous servons",
+    "sectors": ["Énergie (Oil & Gas)", "Mines & carrières", "Utilities & ICT", "Construction & grands projets"],
+    "services_title": "Ce que nous faisons",
+    "services": ["Recrutement & staffing", "Gestion des rotations", "Conformité & certifications", "Logistique & support sites"],
+    "rmtc_title": "RMTC — RedMed Training Center",
+    "rmtc_text": "Formations & certifications (H2S, BOSIET, Secourisme, recyclages périodiques) pour renforcer l'employabilité des talents et garantir la conformité des missions."
+  },
+  "quote": {
+    "title": "Obtenir un devis",
+    "subtitle": "Dites-nous ce dont vous avez besoin : profils, sites, délais, conformité.",
+    "company": "Société",
+    "name": "Nom & Prénom",
+    "email": "E-mail",
+    "phone": "Téléphone",
+    "site": "Site / Région",
+    "need": "Résumé du besoin",
+    "submit": "Envoyer la demande",
+    "ok": "Votre demande a bien été envoyée. Notre équipe vous recontacte rapidement."
+  },
+  "leads": {
+    "title": "Demandes de devis",
+    "export": "Exporter CSV",
+    "empty": "Aucune demande pour le moment."
   },
   "seo": {
     "training_title": "Formations RMTC — RedMed Training Center",

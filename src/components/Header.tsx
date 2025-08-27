@@ -6,6 +6,7 @@ import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { useSession } from "@/stores/useSession";
 import { cn } from "@/lib/utils";
 import { Menu, X, LogOut, User } from "lucide-react";
+import { track } from "@/lib/analytics";
 import { useState } from "react";
 import { 
   DropdownMenu,
@@ -27,6 +28,7 @@ export const Header = () => {
     if (user && role && ['client_admin','approver','ops','recruiter','finance'].includes(role)) {
       navigate('/rfq');
     } else {
+      track('nav_click', { to: '/get-quote' });
       navigate('/get-quote');
     }
   };

@@ -81,23 +81,34 @@ export const Footer = () => {
               Groupe RedMed
             </h3>
             <div className="grid grid-cols-4 gap-3">
-              {businessUnits.map((unit, index) => (
-                <div
-                  key={index}
-                  className="flex flex-col items-center p-2 rounded-lg bg-ink-800/50 hover:bg-ink-700/50 transition-colors group"
-                  title={unit.name}
-                >
-                  <unit.icon 
-                    className={cn(
-                      "h-5 w-5 mb-1 transition-colors group-hover:scale-110",
-                      unit.color
-                    )} 
-                  />
-                  <span className="text-xs text-paper-0/60 text-center leading-tight">
-                    {unit.name}
-                  </span>
-                </div>
-              ))}
+              {businessUnits.map((unit, index) => {
+                const isRMTC = unit.name === "RMTC";
+                const Component = isRMTC ? "a" : "div";
+                const extraProps = isRMTC ? {
+                  href: "https://redmed-learn-hub.vercel.app/",
+                  target: "_blank",
+                  rel: "noopener noreferrer"
+                } : {};
+                
+                return (
+                  <Component
+                    key={index}
+                    className="flex flex-col items-center p-2 rounded-lg bg-ink-800/50 hover:bg-ink-700/50 transition-colors group cursor-pointer"
+                    title={isRMTC ? "RMTC — RedMed Training Center" : unit.name}
+                    {...extraProps}
+                  >
+                    <unit.icon 
+                      className={cn(
+                        "h-5 w-5 mb-1 transition-colors group-hover:scale-110",
+                        unit.color
+                      )} 
+                    />
+                    <span className="text-xs text-paper-0/60 text-center leading-tight">
+                      {unit.name}
+                    </span>
+                  </Component>
+                );
+              })}
             </div>
           </div>
         </div>

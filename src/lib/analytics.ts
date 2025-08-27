@@ -2,7 +2,7 @@ type EventName =
   | 'COURSE_VIEW' | 'ENROLL_SUBMIT' | 'ENROLL_CONFIRMED'
   | 'CERT_ISSUED' | 'CERT_UPLOADED'
   | 'REMINDER_SESSION' | 'REMINDER_CERT_EXPIRY'
-  | 'WEB_VITAL';
+  | 'WEB_VITAL' | 'nav_click' | 'LEAD_SUBMIT';
 
 export function track(event: EventName, payload: Record<string, any> = {}) {
   try {

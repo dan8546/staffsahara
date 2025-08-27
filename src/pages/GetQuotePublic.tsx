@@ -10,6 +10,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Seo } from "@/components/Seo";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { track } from "@/lib/analytics";
 
 const GetQuotePublic = () => {
   const { t } = useTranslation();
@@ -61,23 +62,55 @@ const GetQuotePublic = () => {
       if (error) throw error;
       
       // Track lead submission
-      console.log('LEAD_SUBMIT', formData);
+      track('LEAD_SUBMIT', { source: 'get-quote' });
       
       toast({
-        title: t('getQuote.form.success'),
+        title: t('quote.ok'),
         variant: "default"
       });
       
-      // Redirect to home
-      navigate('/');
+      // Reset form
+      setFormData({
+        company: "",
+        name: "",
+        email: "",
+        phone: "",
+        region: "",
+        summary: "",
+        starAviation: false,
+        billetterie: false
+      });
     } catch (error) {
       toast({
-        title: t('getQuote.form.error'),
+        title: "Erreur lors de l'envoi",
         variant: "destructive"
       });
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const showSuccessActions = () => {
+    return (
+      <div className="text-center space-y-4 mt-6">
+        <p className="text-ink-700">{t('quote.ok')}</p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button 
+            variant="outline"
+            onClick={() => window.open('https://redmed-learn-hub.vercel.app/', '_blank', 'noopener')}
+            className="rounded-2xl"
+          >
+            Voir nos formations RMTC
+          </Button>
+          <Button 
+            onClick={() => navigate('/')}
+            className="rounded-2xl"
+          >
+            Retour à l'accueil
+          </Button>
+        </div>
+      </div>
+    );
   };
 
   return (
@@ -89,41 +122,39 @@ const GetQuotePublic = () => {
       <div className="container mx-auto px-4 py-8 max-w-2xl">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-foreground mb-4">
-            {t('getQuote.title')}
+            {t('quote.title')}
           </h1>
           <p className="text-xl text-muted-foreground">
-            {t('getQuote.subtitle')}
+            {t('quote.subtitle')}
           </p>
         </div>
 
         <Card className="rounded-2xl shadow-soft">
           <CardHeader>
-            <CardTitle>{t('getQuote.title')}</CardTitle>
+            <CardTitle>{t('quote.title')}</CardTitle>
             <CardDescription>
-              {t('getQuote.subtitle')}
+              {t('quote.subtitle')}
             </CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="company">{t('getQuote.form.company')}</Label>
+                  <Label htmlFor="company">{t('quote.company')}</Label>
                   <Input 
                     id="company"
                     value={formData.company}
                     onChange={handleChange('company')}
-                    placeholder={t('getQuote.form.companyPlaceholder')}
                     required
                     aria-describedby="company-desc"
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="name">{t('getQuote.form.name')}</Label>
+                  <Label htmlFor="name">{t('quote.name')}</Label>
                   <Input 
                     id="name"
                     value={formData.name}
                     onChange={handleChange('name')}
-                    placeholder={t('getQuote.form.namePlaceholder')}
                     required
                     aria-describedby="name-desc"
                   />
@@ -132,48 +163,44 @@ const GetQuotePublic = () => {
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="email">{t('getQuote.form.email')}</Label>
+                  <Label htmlFor="email">{t('quote.email')}</Label>
                   <Input 
                     id="email"
                     type="email"
                     value={formData.email}
                     onChange={handleChange('email')}
-                    placeholder={t('getQuote.form.emailPlaceholder')}
                     required
                     aria-describedby="email-desc"
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="phone">{t('getQuote.form.phone')}</Label>
+                  <Label htmlFor="phone">{t('quote.phone')}</Label>
                   <Input 
                     id="phone"
                     type="tel"
                     value={formData.phone}
                     onChange={handleChange('phone')}
-                    placeholder={t('getQuote.form.phonePlaceholder')}
                     aria-describedby="phone-desc"
                   />
                 </div>
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="region">{t('getQuote.form.region')}</Label>
+                <Label htmlFor="region">{t('quote.site')}</Label>
                 <Input 
                   id="region"
                   value={formData.region}
                   onChange={handleChange('region')}
-                  placeholder={t('getQuote.form.regionPlaceholder')}
                   aria-describedby="region-desc"
                 />
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="summary">{t('getQuote.form.summary')}</Label>
+                <Label htmlFor="summary">{t('quote.need')}</Label>
                 <Textarea 
                   id="summary"
                   value={formData.summary}
                   onChange={handleChange('summary')}
-                  placeholder={t('getQuote.form.summaryPlaceholder')}
                   rows={4}
                   required
                   aria-describedby="summary-desc"
@@ -191,7 +218,7 @@ const GetQuotePublic = () => {
                       aria-describedby="star-aviation-desc"
                     />
                     <Label htmlFor="starAviation" className="font-normal">
-                      {t('getQuote.form.starAviation')}
+                      Star Aviation
                     </Label>
                   </div>
                   <div className="flex items-center space-x-2">
@@ -202,7 +229,7 @@ const GetQuotePublic = () => {
                       aria-describedby="billetterie-desc"
                     />
                     <Label htmlFor="billetterie" className="font-normal">
-                      {t('getQuote.form.billetterie')}
+                      Billetterie
                     </Label>
                   </div>
                 </div>
@@ -215,8 +242,11 @@ const GetQuotePublic = () => {
                 disabled={isSubmitting}
                 aria-describedby="submit-desc"
               >
-                {isSubmitting ? "..." : t('getQuote.form.submit')}
+                {isSubmitting ? "..." : t('quote.submit')}
               </Button>
+              
+              {/* Success actions shown after successful submission */}
+              {!formData.company && !formData.email && showSuccessActions()}
             </form>
           </CardContent>
         </Card>

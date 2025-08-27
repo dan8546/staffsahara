@@ -21,13 +21,38 @@
   },
   "about": {
     "title": "About Staff Sahara",
-    "subtitle": "HR & logistics solutions anchored in the Deep South — serving energy, ICT and industries.",
-    "description": "Staff Sahara, leader in recruitment for the Algerian oil sector. Tailor-made HR solutions for the Oil & Gas industry.",
-    "rmtc_block_title": "RMTC — RedMed Training Center",
-    "rmtc_block_text": "Training & certifications (H2S, BOSIET, First Aid, periodic recycling) to strengthen talent employability and guarantee mission compliance.",
-    "cta_training": "View training courses",
-    "values_title": "What guides us",
-    "values": ["Safety & compliance", "Field execution", "Transparency & KPIs"]
+    "subtitle": "HR & logistics solutions rooted in the Greater South — serving energy, ICT and industries.",
+    "cta_quote": "Get a quote",
+    "cta_training": "View our RMTC training",
+    "values_title": "Our commitments",
+    "values": [
+      { "title": "Safety & compliance", "text": "Absolute priority to safety, HSE compliance and operations traceability." },
+      { "title": "Field execution", "text": "Robust processes, controlled rotations, clear reporting, deadlines met." },
+      { "title": "Transparency & KPIs", "text": "Real-time monitoring, shared indicators, continuous improvement." }
+    ],
+    "sectors_title": "Sectors we serve",
+    "sectors": ["Energy (Oil & Gas)", "Mining & quarries", "Utilities & ICT", "Construction & major projects"],
+    "services_title": "What we do",
+    "services": ["Recruitment & staffing", "Rotation management", "Compliance & certifications", "Logistics & site support"],
+    "rmtc_title": "RMTC — RedMed Training Center",
+    "rmtc_text": "Training & certifications (H2S, BOSIET, First Aid, periodic refreshers) to strengthen talent employability and ensure mission compliance."
+  },
+  "quote": {
+    "title": "Get a quote",
+    "subtitle": "Tell us what you need: profiles, sites, deadlines, compliance.",
+    "company": "Company",
+    "name": "Full name",
+    "email": "Email",
+    "phone": "Phone",
+    "site": "Site / Region",
+    "need": "Need summary",
+    "submit": "Send request",
+    "ok": "Your request has been sent. Our team will contact you quickly."
+  },
+  "leads": {
+    "title": "Quote requests",
+    "export": "Export CSV",
+    "empty": "No requests yet."
   },
   "seo": {
     "training_title": "RMTC Training — RedMed Training Center",

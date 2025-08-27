@@ -29,6 +29,7 @@ const MissionDetail = lazy(() => import("./pages/MissionDetail"));
 const Passport = lazy(() => import("./pages/Passport"));
 const Recruiting = lazy(() => import("./pages/Recruiting"));
 const AdminCandidates = lazy(() => import("./pages/AdminCandidates"));
+const AdminLeads = lazy(() => import("./pages/AdminLeads"));
 const MyTraining = lazy(() => import("./pages/MyTraining"));
 const AdminTraining = lazy(() => import("./pages/AdminTraining"));
 const TrainingReminders = lazy(() => import("./pages/TrainingReminders"));
@@ -69,6 +70,7 @@ export const AppRoutes = () => (
         <Route path="/passport" element={<Suspense fallback={<SkeletonPage />}><Passport /></Suspense>} />
         <Route path="/recruiting" element={<Suspense fallback={<SkeletonPage />}><Recruiting /></Suspense>} />
         <Route path="/admin/candidates" element={<Suspense fallback={<SkeletonPage />}><AdminCandidates /></Suspense>} />
+        <Route path="/admin/leads" element={<Suspense fallback={<SkeletonPage />}><AdminLeads /></Suspense>} />
         <Route path="/admin/training" element={<Suspense fallback={<SkeletonPage />}><AdminTraining /></Suspense>} />
         <Route path="/admin/training/reminders" element={<Suspense fallback={<SkeletonPage />}><TrainingReminders /></Suspense>} />
         <Route path="/admin/training/analytics" element={<Suspense fallback={<SkeletonPage />}><TrainingAnalytics /></Suspense>} />
