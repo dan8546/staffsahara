@@ -56,6 +56,7 @@ export const AppRoutes = () => (
       <Route path="/offline" element={<Offline />} />
       <Route path="/unauthorized" element={<Unauthorized />} />
       <Route path="/login" element={<Auth />} />
+      <Route path="/auth" element={<Auth />} />
       <Route path="/auth/callback" element={<Suspense fallback={<SkeletonPage />}><AuthCallback /></Suspense>} />
       <Route path="/pending-approval" element={<PendingApproval />} />
     </Route>
