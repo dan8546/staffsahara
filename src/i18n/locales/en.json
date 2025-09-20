@@ -2,6 +2,13 @@
   "brand": "Staff Sahara",
   "auth": {
     "login_success": "Login successful",
+    "check_mail": "Check your mailbox — link expires in 60 min.",
+    "resend": "Resend link",
+    "link_expired": "Invalid or expired link",
+    "welcome_back": "Welcome back!"
+  },
+  "auth": {
+    "login_success": "Login successful",
     "welcome_back": "Welcome back!",
     "check_mail": "Check your mailbox — link expires in 60 min.",
     "resend": "Resend link",

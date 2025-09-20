@@ -31,7 +31,7 @@ export const RequireAuth = ({
       return;
     }
 
-    // User authenticated but no profile yet (invitation-only system)
+    // User authenticated but no profile yet (should not happen with auto-provision)
     if (user && !profile) {
       navigate("/pending-approval", { replace: true });
       return;
