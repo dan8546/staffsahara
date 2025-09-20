@@ -426,6 +426,7 @@ export type Database = {
       }
       profiles: {
         Row: {
+          approved_at: string | null
           created_at: string
           department: string | null
           first_name: string | null
@@ -440,6 +441,7 @@ export type Database = {
           user_id: string
         }
         Insert: {
+          approved_at?: string | null
           created_at?: string
           department?: string | null
           first_name?: string | null
@@ -454,6 +456,7 @@ export type Database = {
           user_id: string
         }
         Update: {
+          approved_at?: string | null
           created_at?: string
           department?: string | null
           first_name?: string | null
@@ -678,9 +681,18 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      ensure_profile_auto: {
+        Args: {
+          p_account_type?: string
+          p_default_role?: string
+          p_full_name?: string
+        }
+        Returns: undefined
+      }
       get_current_user_profile: {
         Args: Record<PropertyKey, never>
         Returns: {
+          approved_at: string | null
           created_at: string
           department: string | null
           first_name: string | null

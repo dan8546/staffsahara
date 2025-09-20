@@ -1,5 +1,12 @@
 {
   "brand": "Staff Sahara",
+  "auth": {
+    "login_success": "Login successful",
+    "welcome_back": "Welcome back!",
+    "check_mail": "Check your mailbox — link expires in 60 min.",
+    "resend": "Resend link",
+    "link_expired": "Invalid or expired link"
+  },
   "nav": { 
     "b2b":"B2B Solutions", 
     "b2c":"Talent Hub", 

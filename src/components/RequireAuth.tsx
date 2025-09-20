@@ -37,6 +37,12 @@ export const RequireAuth = ({
       return;
     }
 
+    // User suspended - block access
+    if (profile && profile.status === 'suspended') {
+      navigate("/unauthorized", { replace: true });
+      return;
+    }
+
     // Check role-based access
     if (roles.length > 0 && !checkRole(roles)) {
       navigate("/unauthorized", { replace: true });
