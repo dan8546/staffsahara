@@ -18,7 +18,7 @@ const languages = [
 export const LanguageSwitcher = () => {
   const { i18n } = useTranslation();
 
-  const currentLanguage = languages.find(lang => lang.code === i18n.language);
+  const currentLanguage = languages.find(lang => i18n.language.startsWith(lang.code));
 
   const handleLanguageChange = (langCode: string) => {
     i18n.changeLanguage(langCode);
@@ -45,7 +45,7 @@ export const LanguageSwitcher = () => {
             onClick={() => handleLanguageChange(language.code)}
             className={cn(
               "flex items-center gap-3 cursor-pointer",
-              i18n.language === language.code && "bg-accent/10 text-accent font-medium"
+              i18n.language.startsWith(language.code) && "bg-accent/10 text-accent font-medium"
             )}
           >
             <span className="text-lg">{language.flag}</span>
