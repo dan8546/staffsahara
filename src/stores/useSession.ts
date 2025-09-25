@@ -5,11 +5,25 @@ import { supabase } from "@/integrations/supabase/client";
 
 export type UserRole = 'client_admin' | 'approver' | 'ops' | 'recruiter' | 'finance' | 'talent';
 
+const KNOWN_ROLES: readonly UserRole[] = [
+  'client_admin',
+  'approver',
+  'ops',
+  'recruiter',
+  'finance',
+  'talent'
+] as const;
+
+const isUserRole = (value: string | null | undefined): value is UserRole =>
+  typeof value === 'string' && (KNOWN_ROLES as readonly string[]).includes(value);
+
 interface UserProfile {
   id: string;
   user_id: string;
   tenant_id: string;
   role: UserRole;
+  account_type?: string;
+  approved_at?: string | null;
   first_name?: string;
   last_name?: string;
   phone?: string;
@@ -110,7 +124,13 @@ export const useSession = create<SessionState>()(
           }
 
           if (data && data.length > 0) {
-            get().setProfile(data[0]);
+            const rawProfile = data[0];
+            const normalizedRole = isUserRole(rawProfile.role) ? rawProfile.role : 'talent';
+
+            get().setProfile({
+              ...rawProfile,
+              role: normalizedRole,
+            } as UserProfile);
           } else {
             // User authenticated but no profile yet
             get().setProfile(null);

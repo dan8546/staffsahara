@@ -14,9 +14,7 @@ import Auth from "./pages/Auth";
 import PendingApproval from "./pages/PendingApproval";
 import NotFound from "./pages/NotFound";
 import GetQuotePublic from "./pages/GetQuotePublic";
-
-// Lazy loaded auth callback
-const AuthCallback = lazy(() => import("./components/AuthCallback"));
+import AuthCallback from "./pages/AuthCallback";
 
 // Lazy loaded public pages
 const About = lazy(() => import("./pages/About"));
@@ -57,7 +55,7 @@ export const AppRoutes = () => (
       <Route path="/unauthorized" element={<Unauthorized />} />
       <Route path="/login" element={<Auth />} />
       <Route path="/auth" element={<Auth />} />
-      <Route path="/auth/callback" element={<Suspense fallback={<SkeletonPage />}><AuthCallback /></Suspense>} />
+      <Route path="/auth/callback" element={<AuthCallback />} />
       <Route path="/pending-approval" element={<PendingApproval />} />
     </Route>
 

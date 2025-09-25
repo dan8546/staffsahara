@@ -426,6 +426,7 @@ export type Database = {
       }
       profiles: {
         Row: {
+          account_type: string | null
           approved_at: string | null
           created_at: string
           department: string | null
@@ -434,13 +435,14 @@ export type Database = {
           is_staff: boolean
           last_name: string | null
           phone: string | null
-          role: Database["public"]["Enums"]["user_role"]
+          role: string
           status: string | null
           tenant_id: string
           updated_at: string
           user_id: string
         }
         Insert: {
+          account_type?: string | null
           approved_at?: string | null
           created_at?: string
           department?: string | null
@@ -449,13 +451,14 @@ export type Database = {
           is_staff?: boolean
           last_name?: string | null
           phone?: string | null
-          role?: Database["public"]["Enums"]["user_role"]
+          role?: string
           status?: string | null
           tenant_id: string
           updated_at?: string
           user_id: string
         }
         Update: {
+          account_type?: string | null
           approved_at?: string | null
           created_at?: string
           department?: string | null
@@ -464,7 +467,7 @@ export type Database = {
           is_staff?: boolean
           last_name?: string | null
           phone?: string | null
-          role?: Database["public"]["Enums"]["user_role"]
+          role?: string
           status?: string | null
           tenant_id?: string
           updated_at?: string
@@ -692,6 +695,7 @@ export type Database = {
       get_current_user_profile: {
         Args: Record<PropertyKey, never>
         Returns: {
+          account_type: string | null
           approved_at: string | null
           created_at: string
           department: string | null
@@ -700,7 +704,7 @@ export type Database = {
           is_staff: boolean
           last_name: string | null
           phone: string | null
-          role: Database["public"]["Enums"]["user_role"]
+          role: string
           status: string | null
           tenant_id: string
           updated_at: string
@@ -718,7 +722,7 @@ export type Database = {
           is_staff: boolean
           last_name: string
           phone: string
-          role: Database["public"]["Enums"]["user_role"]
+          role: string
           status: string
           tenant_id: string
           tenant_name: string
