@@ -24,16 +24,12 @@ export const RequireAuth = ({
 
     // Not authenticated, redirect to login
     if (!user) {
-      navigate(fallbackPath, { 
-        state: { from: location },
-        replace: true 
-      });
-      return;
-    }
+      const nextParam = encodeURIComponent(location.pathname + location.search);
+      const target = fallbackPath === "/login"
+        ? `/login?next=${nextParam}`
+        : fallbackPath;
 
-    // User authenticated but no profile yet (should not happen with auto-provision)
-    if (user && !profile) {
-      navigate("/pending-approval", { replace: true });
+      navigate(target, { replace: true });
       return;
     }
 
