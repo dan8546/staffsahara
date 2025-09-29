@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { useNavigate, useLocation, Outlet } from "react-router-dom";
-import { useSession, UserRole } from "@/stores/useSession";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { useSession, type UserRole } from "@/stores/useSession";
 import { Loader2 } from "lucide-react";
 
 interface RequireAuthProps {
@@ -9,48 +9,27 @@ interface RequireAuthProps {
   fallbackPath?: string;
 }
 
-export const RequireAuth = ({ 
-  children, 
-  roles = [], 
-  fallbackPath = "/login" 
+export const RequireAuth = ({
+  children,
+  roles = [],
+  fallbackPath = "/login",
 }: RequireAuthProps) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { user, profile, isLoading, checkRole } = useSession();
+  const { user, isLoading } = useSession();
 
   useEffect(() => {
-    // Still loading, wait
     if (isLoading) return;
 
-    // Not authenticated, redirect to login
     if (!user) {
-      navigate(fallbackPath, { 
-        state: { from: location },
-        replace: true 
-      });
-      return;
-    }
+      const nextParam = encodeURIComponent(location.pathname + location.search);
+      const target =
+        fallbackPath === "/login" ? `/login?next=${nextParam}` : fallbackPath;
 
-    // User authenticated but no profile yet (should not happen with auto-provision)
-    if (user && !profile) {
-      navigate("/pending-approval", { replace: true });
-      return;
+      navigate(target, { replace: true });
     }
+  }, [user, isLoading, navigate, location, fallbackPath]);
 
-    // User suspended - block access
-    if (profile && profile.status === 'suspended') {
-      navigate("/unauthorized", { replace: true });
-      return;
-    }
-
-    // Check role-based access
-    if (roles.length > 0 && !checkRole(roles)) {
-      navigate("/unauthorized", { replace: true });
-      return;
-    }
-  }, [user, profile, isLoading, roles, navigate, location, fallbackPath, checkRole]);
-
-  // Show loading while checking auth state
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -62,21 +41,9 @@ export const RequireAuth = ({
     );
   }
 
-  // Not authenticated
   if (!user) {
     return null;
   }
 
-  // Authenticated but no profile (will redirect)
-  if (!profile) {
-    return null;
-  }
-
-  // Role check failed (will redirect)
-  if (roles.length > 0 && !checkRole(roles)) {
-    return null;
-  }
-
-  // All checks passed
   return children ? <>{children}</> : <Outlet />;
 };

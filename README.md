@@ -71,3 +71,7 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+
+## Auth guard (session-only)
+
+The in-app routes now rely on a session-only guard. As soon as a Supabase session exists, the user may reach the protected pages without any additional role or status checks. If the visitor is not authenticated, they are redirected to `/login?next=...` so they can resume where they left off after signing in. The optional `roles` prop accepted by `RequireAuth` is still present for compatibility but is ignored and considered deprecated.
