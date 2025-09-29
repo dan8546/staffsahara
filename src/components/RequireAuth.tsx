@@ -1,17 +1,17 @@
 import { useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import { useSession, type UserRole } from "@/stores/useSession";
+import { useSession } from "@/stores/useSession";
 import { Loader2 } from "lucide-react";
 
-interface RequireAuthProps {
+type RequireAuthProps = {
   children?: React.ReactNode;
-  roles?: UserRole[];
+  /** kept for compat but ignored */
+  roles?: string[];
   fallbackPath?: string;
-}
+};
 
 export const RequireAuth = ({
   children,
-  roles = [],
   fallbackPath = "/login",
 }: RequireAuthProps) => {
   const navigate = useNavigate();
@@ -21,8 +21,11 @@ export const RequireAuth = ({
   useEffect(() => {
     if (isLoading) return;
 
+    // seul contrôle : être connecté
     if (!user) {
-      const nextParam = encodeURIComponent(location.pathname + location.search);
+      const nextParam = encodeURIComponent(
+        location.pathname + location.search
+      );
       const target =
         fallbackPath === "/login" ? `/login?next=${nextParam}` : fallbackPath;
 
@@ -34,16 +37,18 @@ export const RequireAuth = ({
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <Loader2 className="h-8 w-8 animate-spin text-brand-blue mx-auto mb-4" />
-          <p className="text-ink-700">Chargement...</p>
+          <Loader2 className="h-8 w-8 animate-spin mx-auto mb-4" />
+          <p>Chargement…</p>
         </div>
       </div>
     );
   }
 
-  if (!user) {
-    return null;
-  }
+  // si non connecté, on a déjà redirigé
+  if (!user) return null;
 
+  // pas de check rôle/statut
   return children ? <>{children}</> : <Outlet />;
 };
+
+export default RequireAuth;
