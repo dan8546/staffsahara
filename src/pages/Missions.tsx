@@ -2,14 +2,14 @@ import { useState, useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { MapPin, Calendar, User, Search, Plus, FileText } from "lucide-react";
+import { MapPin, Search, Plus, FileText } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
-import { MissionCreateModal } from "@/components/MissionCreateModal";
+// import { MissionCreateModal } from "@/components/MissionCreateModal";
 import { useToast } from "@/hooks/use-toast";
 
 interface Mission {
@@ -31,14 +31,12 @@ const Missions = () => {
   const [searchTerm, setSearchTerm] = useState(searchParams.get('search') || '');
   const [statusFilter, setStatusFilter] = useState(searchParams.get('status') || 'all');
   const [siteFilter, setSiteFilter] = useState(searchParams.get('site') || 'all');
-  const [createModalOpen, setCreateModalOpen] = useState(false);
+  // const [createModalOpen, setCreateModalOpen] = useState(false);
 
-  // Load missions
   useEffect(() => {
     loadMissions();
   }, []);
 
-  // Update URL params
   useEffect(() => {
     const params = new URLSearchParams();
     if (searchTerm) params.set('search', searchTerm);
@@ -79,20 +77,17 @@ const Missions = () => {
     }
   };
 
-  // Filtered missions
   const filteredMissions = useMemo(() => {
     return missions.filter(mission => {
-      const matchesSearch = !searchTerm || 
+      const matchesSearch = !searchTerm ||
         mission.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         mission.site?.toLowerCase().includes(searchTerm.toLowerCase());
       const matchesStatus = statusFilter === 'all' || mission.status === statusFilter;
       const matchesSite = siteFilter === 'all' || mission.site === siteFilter;
-      
       return matchesSearch && matchesStatus && matchesSite;
     });
   }, [missions, searchTerm, statusFilter, siteFilter]);
 
-  // Unique sites for filter
   const uniqueSites = useMemo(() => {
     const sites = missions
       .map(m => m.site)
@@ -113,13 +108,11 @@ const Missions = () => {
           </p>
         </div>
         <div className="flex gap-3">
-          <Button 
-            variant="outline" 
-            onClick={() => setCreateModalOpen(true)}
-            className="rounded-2xl shadow-soft"
-          >
-            <FileText className="h-4 w-4 mr-2" />
-            {t('missions.createFromRfq')}
+          <Button variant="outline" asChild className="rounded-2xl shadow-soft">
+            <Link to="/rfq">
+              <FileText className="h-4 w-4 mr-2" />
+              {t('missions.createFromRfq')}
+            </Link>
           </Button>
           <Button className="rounded-2xl shadow-soft">
             <Plus className="h-4 w-4 mr-2" />
@@ -128,7 +121,6 @@ const Missions = () => {
         </div>
       </div>
 
-      {/* Filters */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
         <div className="relative">
           <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
@@ -139,7 +131,7 @@ const Missions = () => {
             className="pl-9"
           />
         </div>
-        
+
         <Select value={statusFilter} onValueChange={setStatusFilter}>
           <SelectTrigger>
             <SelectValue placeholder={t('missions.filters.status')} />
@@ -167,7 +159,6 @@ const Missions = () => {
         </Select>
       </div>
 
-      {/* Table */}
       {loading ? (
         <div className="flex justify-center py-12">
           <div className="text-center">
@@ -181,8 +172,8 @@ const Missions = () => {
             <FileText className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
             <h3 className="text-lg font-medium mb-2">{t('missions.emptyState.title')}</h3>
             <p className="text-muted-foreground mb-4">{t('missions.emptyState.description')}</p>
-            <Button onClick={() => setCreateModalOpen(true)}>
-              {t('missions.emptyState.createFirst')}
+            <Button asChild>
+              <Link to="/rfq">{t('missions.emptyState.createFirst')}</Link>
             </Button>
           </CardContent>
         </Card>
@@ -236,10 +227,8 @@ const Missions = () => {
         </Card>
       )}
 
-      <MissionCreateModal 
-        open={createModalOpen} 
-        onOpenChange={setCreateModalOpen}
-      />
+      {/* Modale désactivée temporairement */}
+      {/* <MissionCreateModal open={createModalOpen} onOpenChange={setCreateModalOpen} /> */}
     </div>
   );
 };
