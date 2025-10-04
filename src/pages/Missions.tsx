@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -11,6 +11,7 @@ import { MapPin, Search, Plus, FileText } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 // import { MissionCreateModal } from "@/components/MissionCreateModal";
 import { useToast } from "@/hooks/use-toast";
+import { useSession } from "@/stores/useSession";
 
 interface Mission {
   id: string;
@@ -25,102 +26,142 @@ interface Mission {
 const Missions = () => {
   const { t } = useTranslation();
   const { toast } = useToast();
+  const navigate = useNavigate();
+  const { user } = useSession();
+
   const [searchParams, setSearchParams] = useSearchParams();
   const [missions, setMissions] = useState<Mission[]>([]);
   const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState(searchParams.get('search') || '');
-  const [statusFilter, setStatusFilter] = useState(searchParams.get('status') || 'all');
-  const [siteFilter, setSiteFilter] = useState(searchParams.get('site') || 'all');
+  const [searchTerm, setSearchTerm] = useState(searchParams.get("search") || "");
+  const [statusFilter, setStatusFilter] = useState(searchParams.get("status") || "all");
+  const [siteFilter, setSiteFilter] = useState(searchParams.get("site") || "all");
   // const [createModalOpen, setCreateModalOpen] = useState(false);
 
+  // Charger les missions
   useEffect(() => {
     loadMissions();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Sync des filtres dans l'URL
   useEffect(() => {
     const params = new URLSearchParams();
-    if (searchTerm) params.set('search', searchTerm);
-    if (statusFilter !== 'all') params.set('status', statusFilter);
-    if (siteFilter !== 'all') params.set('site', siteFilter);
+    if (searchTerm) params.set("search", searchTerm);
+    if (statusFilter !== "all") params.set("status", statusFilter);
+    if (siteFilter !== "all") params.set("site", siteFilter);
     setSearchParams(params);
   }, [searchTerm, statusFilter, siteFilter, setSearchParams]);
 
   const loadMissions = async () => {
     try {
       const { data, error } = await supabase
-        .from('missions')
-        .select('*')
-        .order('created_at', { ascending: false });
+        .from("missions")
+        .select("*")
+        .order("created_at", { ascending: false });
 
       if (error) throw error;
       setMissions(data || []);
     } catch (error) {
-      console.error('Error loading missions:', error);
+      console.error("Error loading missions:", error);
       toast({
         title: "Erreur",
         description: "Impossible de charger les missions",
-        variant: "destructive"
+        variant: "destructive",
       });
     } finally {
       setLoading(false);
     }
   };
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case "draft": return "bg-gray-100 text-gray-800";
-      case "in_review": return "bg-blue-100 text-blue-800";
-      case "signed": return "bg-amber-100 text-amber-800";
-      case "active": return "bg-green-100 text-green-800";
-      case "completed": return "bg-blue-100 text-blue-800";
-      default: return "bg-gray-100 text-gray-800";
+  // Créer une mission brouillon et naviguer vers sa page
+  const createDraftMission = async () => {
+    try {
+      const { data, error } = await supabase
+        .from("missions")
+        .insert({
+          title: "Nouvelle mission",
+          status: "draft",
+          created_by: user?.id ?? null,
+          description: null,
+          site: null,
+          rfq_id: null,
+        })
+        .select("id")
+        .single();
+
+      if (error) throw error;
+
+      toast({ title: "Succès", description: "Brouillon de mission créé." });
+      navigate(`/missions/${data.id}`);
+    } catch (err) {
+      console.error("Error creating draft mission:", err);
+      toast({
+        title: "Erreur",
+        description: "Impossible de créer la mission",
+        variant: "destructive",
+      });
     }
   };
 
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case "draft":
+        return "bg-gray-100 text-gray-800";
+      case "in_review":
+        return "bg-blue-100 text-blue-800";
+      case "signed":
+        return "bg-amber-100 text-amber-800";
+      case "active":
+        return "bg-green-100 text-green-800";
+      case "completed":
+        return "bg-blue-100 text-blue-800";
+      default:
+        return "bg-gray-100 text-gray-800";
+    }
+  };
+
+  // Missions filtrées
   const filteredMissions = useMemo(() => {
-    return missions.filter(mission => {
-      const matchesSearch = !searchTerm ||
+    return missions.filter((mission) => {
+      const matchesSearch =
+        !searchTerm ||
         mission.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         mission.site?.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesStatus = statusFilter === 'all' || mission.status === statusFilter;
-      const matchesSite = siteFilter === 'all' || mission.site === siteFilter;
+      const matchesStatus = statusFilter === "all" || mission.status === statusFilter;
+      const matchesSite = siteFilter === "all" || mission.site === siteFilter;
+
       return matchesSearch && matchesStatus && matchesSite;
     });
   }, [missions, searchTerm, statusFilter, siteFilter]);
 
+  // Sites uniques pour le filtre
   const uniqueSites = useMemo(() => {
-    const sites = missions
-      .map(m => m.site)
-      .filter(Boolean)
-      .filter((site, index, arr) => arr.indexOf(site) === index);
-    return sites;
+    const sites = missions.map((m) => m.site).filter(Boolean);
+    return Array.from(new Set(sites));
   }, [missions]);
 
   return (
     <div className="container max-w-7xl mx-auto px-4 py-12">
       <div className="flex justify-between items-center mb-8">
         <div>
-          <h1 className="text-4xl font-bold text-ink-900 mb-2">
-            {t('missions.title')}
-          </h1>
-          <p className="text-xl text-ink-700">
-            {t('missions.subtitle')}
-          </p>
+          <h1 className="text-4xl font-bold text-ink-900 mb-2">{t("missions.title")}</h1>
+          <p className="text-xl text-ink-700">{t("missions.subtitle")}</p>
         </div>
         <div className="flex gap-3">
-          <Button variant="outline" asChild className="rounded-2xl shadow-soft">
-            <Link to="/rfq">
-              <FileText className="h-4 w-4 mr-2" />
-              {t('missions.createFromRfq')}
-            </Link>
+          {/* Ancien bouton qui ouvrait le RFQ wizard : on garde mais on le fait créer un brouillon */}
+          <Button variant="outline" onClick={createDraftMission} className="rounded-2xl shadow-soft">
+            <FileText className="h-4 w-4 mr-2" />
+            {t("missions.createFromRfq")}
           </Button>
-          <Button className="rounded-2xl shadow-soft">
+          {/* Nouveau : créer directement un brouillon */}
+          <Button onClick={createDraftMission} className="rounded-2xl shadow-soft">
             <Plus className="h-4 w-4 mr-2" />
-            {t('missions.newMission')}
+            {t("missions.newMission")}
           </Button>
         </div>
       </div>
 
+      {/* Filtres */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
         <div className="relative">
           <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
@@ -134,31 +175,34 @@ const Missions = () => {
 
         <Select value={statusFilter} onValueChange={setStatusFilter}>
           <SelectTrigger>
-            <SelectValue placeholder={t('missions.filters.status')} />
+            <SelectValue placeholder={t("missions.filters.status")} />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">{t('missions.filters.all')}</SelectItem>
-            <SelectItem value="draft">{t('missions.status.draft')}</SelectItem>
-            <SelectItem value="in_review">{t('missions.status.in_review')}</SelectItem>
-            <SelectItem value="signed">{t('missions.status.signed')}</SelectItem>
-            <SelectItem value="active">{t('missions.status.active')}</SelectItem>
-            <SelectItem value="completed">{t('missions.status.completed')}</SelectItem>
+            <SelectItem value="all">{t("missions.filters.all")}</SelectItem>
+            <SelectItem value="draft">{t("missions.status.draft")}</SelectItem>
+            <SelectItem value="in_review">{t("missions.status.in_review")}</SelectItem>
+            <SelectItem value="signed">{t("missions.status.signed")}</SelectItem>
+            <SelectItem value="active">{t("missions.status.active")}</SelectItem>
+            <SelectItem value="completed">{t("missions.status.completed")}</SelectItem>
           </SelectContent>
         </Select>
 
         <Select value={siteFilter} onValueChange={setSiteFilter}>
           <SelectTrigger>
-            <SelectValue placeholder={t('missions.filters.site')} />
+            <SelectValue placeholder={t("missions.filters.site")} />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">{t('missions.filters.all')}</SelectItem>
-            {uniqueSites.map(site => (
-              <SelectItem key={site} value={site!}>{site}</SelectItem>
+            <SelectItem value="all">{t("missions.filters.all")}</SelectItem>
+            {uniqueSites.map((site) => (
+              <SelectItem key={site} value={site!}>
+                {site}
+              </SelectItem>
             ))}
           </SelectContent>
         </Select>
       </div>
 
+      {/* Table */}
       {loading ? (
         <div className="flex justify-center py-12">
           <div className="text-center">
@@ -170,11 +214,9 @@ const Missions = () => {
         <Card className="p-12 text-center">
           <CardContent>
             <FileText className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-            <h3 className="text-lg font-medium mb-2">{t('missions.emptyState.title')}</h3>
-            <p className="text-muted-foreground mb-4">{t('missions.emptyState.description')}</p>
-            <Button asChild>
-              <Link to="/rfq">{t('missions.emptyState.createFirst')}</Link>
-            </Button>
+            <h3 className="text-lg font-medium mb-2">{t("missions.emptyState.title")}</h3>
+            <p className="text-muted-foreground mb-4">{t("missions.emptyState.description")}</p>
+            <Button onClick={createDraftMission}>{t("missions.emptyState.createFirst")}</Button>
           </CardContent>
         </Card>
       ) : (
@@ -182,11 +224,11 @@ const Missions = () => {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>{t('missions.table.title')}</TableHead>
-                <TableHead>{t('missions.table.site')}</TableHead>
-                <TableHead>{t('missions.table.status')}</TableHead>
-                <TableHead>{t('missions.table.createdAt')}</TableHead>
-                <TableHead className="w-32">{t('missions.table.actions')}</TableHead>
+                <TableHead>{t("missions.table.title")}</TableHead>
+                <TableHead>{t("missions.table.site")}</TableHead>
+                <TableHead>{t("missions.table.status")}</TableHead>
+                <TableHead>{t("missions.table.createdAt")}</TableHead>
+                <TableHead className="w-32">{t("missions.table.actions")}</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -204,19 +246,13 @@ const Missions = () => {
                     )}
                   </TableCell>
                   <TableCell>
-                    <Badge className={getStatusColor(mission.status)}>
-                      {t(`missions.status.${mission.status}`)}
-                    </Badge>
+                    <Badge className={getStatusColor(mission.status)}>{t(`missions.status.${mission.status}`)}</Badge>
                   </TableCell>
-                  <TableCell>
-                    {new Date(mission.created_at).toLocaleDateString('fr-FR')}
-                  </TableCell>
+                  <TableCell>{new Date(mission.created_at).toLocaleDateString("fr-FR")}</TableCell>
                   <TableCell>
                     <div className="flex gap-2">
                       <Button asChild variant="outline" size="sm">
-                        <Link to={`/missions/${mission.id}`}>
-                          {t('missions.viewDetails')}
-                        </Link>
+                        <Link to={`/missions/${mission.id}`}>{t("missions.viewDetails")}</Link>
                       </Button>
                     </div>
                   </TableCell>
@@ -227,7 +263,6 @@ const Missions = () => {
         </Card>
       )}
 
-      {/* Modale désactivée temporairement */}
       {/* <MissionCreateModal open={createModalOpen} onOpenChange={setCreateModalOpen} /> */}
     </div>
   );
