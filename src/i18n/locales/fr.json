@@ -1,12 +1,13 @@
 {
   "brand": "Staff Sahara",
-  "auth": {
-    "login_success": "Connexion réussie",
-    "check_mail": "Vérifie ta boîte mail — le lien expire dans 60 min.",
-    "resend": "Renvoyer le lien",
-    "link_expired": "Lien invalide ou expiré",
-    "welcome_back": "Bienvenue !"
+
+  "common": {
+    "back": "Retour",
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "cancel": "Annuler"
   },
+
   "auth": {
     "login_success": "Connexion réussie",
     "welcome_back": "Bon retour !",
@@ -14,29 +15,50 @@
     "resend": "Renvoyer le lien",
     "link_expired": "Lien invalide ou expiré"
   },
+
   "nav": { 
-    "b2b":"Solutions B2B", 
-    "b2c":"Espace Talents", 
-    "about":"À propos", 
-    "rfq":"Demander un devis", 
-    "passport":"Mon passeport", 
-    "jobs":"Offres", 
-    "login":"Connexion" 
+    "b2b": "Solutions B2B", 
+    "b2c": "Espace Talents", 
+    "about": "À propos", 
+    "rfq": "Demander un devis", 
+    "passport": "Mon passeport", 
+    "jobs": "Offres", 
+    "login": "Connexion" 
   },
+
   "cta": {
-    "getQuote":"Obtenir un devis", 
-    "createPassport":"Créer mon passeport", 
-    "viewMissions":"Voir mes missions",
-    "airQuote":"Demander un devis Star Aviation", 
-    "seeAviation":"Voir nos capacités aériennes"
+    "getQuote": "Obtenir un devis", 
+    "createPassport": "Créer mon passeport", 
+    "viewMissions": "Voir mes missions",
+    "airQuote": "Demander un devis Star Aviation", 
+    "seeAviation": "Voir nos capacités aériennes"
   },
+
   "missions": {
     "title": "Mes Missions",
     "subtitle": "Gérez vos missions en cours et à venir",
+
+    "untitled": "Nouvelle mission",
     "createFromRfq": "Créer depuis RFQ",
     "newMission": "Nouvelle Mission",
     "viewDetails": "Voir détails",
-    "edit": "Modifier", 
+    "edit": "Modifier",
+
+    "tabs": {
+      "overview": "Vue d'ensemble",
+      "documents": "Documents",
+      "aviation": "Star Aviation",
+      "compliance": "Conformité & RMTC"
+    },
+
+    "overview": {
+      "description": "Description de la mission",
+      "empty": "Aucune description pour le moment.",
+      "infos": "Informations",
+      "period": "Période",
+      "client": "Client"
+    },
+
     "status": {
       "draft": "Brouillon",
       "in_review": "En validation", 
@@ -44,6 +66,7 @@
       "active": "Active",
       "completed": "Terminée"
     },
+
     "table": {
       "title": "Titre",
       "site": "Site",
@@ -51,16 +74,19 @@
       "createdAt": "Créé le",
       "actions": "Actions"
     },
+
     "filters": {
       "all": "Tous",
       "status": "Statut",
       "site": "Site"
     },
+
     "emptyState": {
       "title": "Aucune mission trouvée",
       "description": "Commencez par créer votre première mission depuis un RFQ ou créez-en une nouvelle.",
       "createFirst": "Créer ma première mission"
     },
+
     "createModal": {
       "title": "Créer une mission depuis un RFQ", 
       "selectRfq": "Sélectionner un RFQ",
@@ -69,6 +95,7 @@
       "create": "Créer la mission",
       "cancel": "Annuler"
     },
+
     "docs": {
       "title": "Documents",
       "upload": "Téléverser",
@@ -84,6 +111,7 @@
       "delete": "Supprimer",
       "empty": "Aucun document pour cette mission."
     },
+
     "aviation": {
       "tab": "Star Aviation",
       "create": "Créer une demande",
@@ -113,6 +141,7 @@
       "exportPdf": "Exporter PDF",
       "empty": "Aucune demande aérienne pour cette mission."
     },
+
     "compliance": {
       "tab": "Conformité & RMTC",
       "required": "Certifs requises",
@@ -124,14 +153,17 @@
       "enrolled": "Inscrits"
     }
   },
+
   "public": {
     "banner": "Vous consultez la version publique — certaines fonctions nécessitent une connexion."
   },
+
   "jobs": {
     "title": "Offres d'emploi - Staff Sahara",
     "apply": "Postuler",
     "compat": "Compatibilité"
   },
+
   "reminders": {
     "title": "Rappels RMTC",
     "sessions": "Rappels sessions J-7",
@@ -139,11 +171,13 @@
     "send": "Envoyer rappel",
     "notify": "Notifier"
   },
+
   "passport": {
     "title": "Passeport Talent",
     "save": "Enregistrer",
     "description": "Découvrez les opportunités d'emploi dans le Grand Sud algérien. Postes Oil & Gas, ingénierie, HSE et logistique."
   },
+
   "about": {
     "title": "À propos de Staff Sahara",
     "subtitle": "Solutions RH & logistique ancrées dans le Grand Sud — au service de l'énergie, de l'ICT et des industries.",
@@ -162,6 +196,7 @@
     "rmtc_title": "RMTC — RedMed Training Center",
     "rmtc_text": "Formations & certifications (H2S, BOSIET, Secourisme, recyclages périodiques) pour renforcer l'employabilité des talents et garantir la conformité des missions."
   },
+
   "quote": {
     "title": "Obtenir un devis",
     "subtitle": "Dites-nous ce dont vous avez besoin : profils, sites, délais, conformité.",
@@ -174,17 +209,20 @@
     "submit": "Envoyer la demande",
     "ok": "Votre demande a bien été envoyée. Notre équipe vous recontacte rapidement."
   },
+
   "leads": {
     "title": "Demandes de devis",
     "export": "Exporter CSV",
     "empty": "Aucune demande pour le moment."
   },
+
   "seo": {
     "training_title": "Formations RMTC — RedMed Training Center",
     "training_desc": "Catalogue officiel RMTC : H2S, BOSIET, Secourisme… Sessions à venir, certificats et recyclages.",
     "course_title": "Formation {{code}} — {{title}} | RMTC",
     "course_desc": "Programme {{title}} ({{code}}), durée {{hours}}h — sessions à venir à {{location}}."
   },
+
   "analytics": {
     "title": "Analytics RMTC",
     "kpis": {
@@ -195,6 +233,7 @@
     },
     "top_courses": "Top cours (30j)"
   },
+
   "getQuote": {
     "title": "Demander un devis",
     "subtitle": "Décrivez votre besoin et recevez une proposition commerciale personnalisée",
@@ -218,79 +257,85 @@
       "error": "Une erreur est survenue. Veuillez réessayer."
     }
   },
+
   "hero": {
-    "title":"Assistance technique & RH pour sites isolés du Grand Sud",
-    "subtitle":"Recrutement, conformité, rotations et logistique — une plateforme unifiée adossée aux synergies RedMed."
+    "title": "Assistance technique & RH pour sites isolés du Grand Sud",
+    "subtitle": "Recrutement, conformité, rotations et logistique — une plateforme unifiée adossée aux synergies RedMed."
   },
+
   "capabilities": {
     "staffing": { 
-      "title":"Staffing & Mission Control", 
-      "desc":"Du RFQ à la mission signée : documents, e-sign, SLA, visibilité." 
+      "title": "Staffing & Mission Control", 
+      "desc": "Du RFQ à la mission signée : documents, e-sign, SLA, visibilité." 
     },
     "compliance": { 
-      "title":"Conformité & HSE", 
-      "desc":"Passeports, certificats, médicaux : conformité by-design." 
+      "title": "Conformité & HSE", 
+      "desc": "Passeports, certificats, médicaux : conformité by-design." 
     },
     "rotations": { 
-      "title":"Rotations & Logistique", 
-      "desc":"Planifiez rotations, travel et services de site avec nos BU." 
+      "title": "Rotations & Logistique", 
+      "desc": "Planifiez rotations, travel et services de site avec nos BU." 
     }
   },
+
   "synergies": {
-    "medical":"Assistance médicale 24/7",
-    "mobile":"Unités mobiles & bases de vie",
-    "energy":"Énergie temporaire",
-    "ict":"ICT & Datacenter",
-    "rmtc":"RMTC — RedMed Training Center",
+    "medical": "Assistance médicale 24/7",
+    "mobile": "Unités mobiles & bases de vie",
+    "energy": "Énergie temporaire",
+    "ict": "ICT & Datacenter",
+    "rmtc": "RMTC — RedMed Training Center",
     "starAviation": {
-      "title":"Star Aviation — Travail aérien",
-      "k1":"Transport de personnel (navettes) entre sites et hubs",
-      "k2":"Vols charters dédiés (Algérie ↔ Europe)",
-      "k3":"Vols à la demande (Algérie, Europe, Afrique)",
-      "k4":"Évacuation sanitaire 24/7",
-      "k5":"Assistance au sol & formalités",
-      "k6":"Maintenance agréée (Diamond, Textron)"
+      "title": "Star Aviation — Travail aérien",
+      "k1": "Transport de personnel (navettes) entre sites et hubs",
+      "k2": "Vols charters dédiés (Algérie ↔ Europe)",
+      "k3": "Vols à la demande (Algérie, Europe, Afrique)",
+      "k4": "Évacuation sanitaire 24/7",
+      "k5": "Assistance au sol & formalités",
+      "k6": "Maintenance agréée (Diamond, Textron)"
     },
     "siyaha": {
-      "title":"Ain Salah Siyaha — Billetterie",
-      "k1":"Émission de billets (Air Algérie et partenaires)",
-      "k2":"Optimisation d'itinéraires & changements",
-      "k3":"Support voyageurs corporate"
+      "title": "Ain Salah Siyaha — Billetterie",
+      "k1": "Émission de billets (Air Algérie et partenaires)",
+      "k2": "Optimisation d'itinéraires & changements",
+      "k3": "Support voyageurs corporate"
     }
   },
+
   "rfq": {
-    "step1":"Profils & volumétrie", 
-    "step2":"Sites & SLA", 
-    "step3":"Add-ons & services",
-    "airlift":"Besoin Star Aviation (travail aérien)", 
-    "airlift_note":"Réservé aux clients sous contrat ; planifiez navettes/charters/medevac.",
-    "ticketing":"Billetterie (Ain Salah Siyaha)",
-    "submit":"Soumettre le RFQ",
-    "saved":"RFQ enregistré — consultez vos missions."
+    "step1": "Profils & volumétrie", 
+    "step2": "Sites & SLA", 
+    "step3": "Add-ons & services",
+    "airlift": "Besoin Star Aviation (travail aérien)", 
+    "airlift_note": "Réservé aux clients sous contrat ; planifiez navettes/charters/medevac.",
+    "ticketing": "Billetterie (Ain Salah Siyaha)",
+    "submit": "Soumettre le RFQ",
+    "saved": "RFQ enregistré — consultez vos missions."
   },
+
   "rfq_form": {
-    "step1":"Profils & volumétrie",
-    "profile":"Profil",
-    "seniority":"Séniorité",
-    "qty":"Quantité",
-    "addProfile":"+ Ajouter un profil",
-    "next":"Suivant",
-    "step2":"Sites & SLA",
-    "sites":"Sites",
-    "startDate":"Date de démarrage",
-    "rotationOn":"Jours ON",
-    "rotationOff":"Jours OFF",
-    "languages":"Langues",
-    "hse":"Exigences HSE",
-    "step3":"Add-ons & services",
+    "step1": "Profils & volumétrie",
+    "profile": "Profil",
+    "seniority": "Séniorité",
+    "qty": "Quantité",
+    "addProfile": "+ Ajouter un profil",
+    "next": "Suivant",
+    "step2": "Sites & SLA",
+    "sites": "Sites",
+    "startDate": "Date de démarrage",
+    "rotationOn": "Jours ON",
+    "rotationOff": "Jours OFF",
+    "languages": "Langues",
+    "hse": "Exigences HSE",
+    "step3": "Add-ons & services",
     "placeholders": {
-      "profile":"Technicien HSE, Électricien...",
-      "qty":"Ex.: 5"
+      "profile": "Technicien HSE, Électricien...",
+      "qty": "Ex.: 5"
     },
     "helpers": {
-      "rotation":"Ex.: 14/14 ou 28/28"
+      "rotation": "Ex.: 14/14 ou 28/28"
     }
   },
+
   "rmtc": {
     "catalog_title": "Formations & Certifications (RMTC)",
     "catalog_subtitle": "Construisez votre employabilité et maintenez la conformité de vos équipes avec le RedMed Training Center.",
@@ -299,6 +344,7 @@
     "cta_propose": "Proposer une session RMTC",
     "badge_certified": "RMTC-OK"
   },
+
   "training": {
     "title": "Formations & Certifications (RMTC)",
     "browse": "Découvrez votre parcours de formation.",
@@ -321,21 +367,25 @@
     "noSessions": "Aucune session programmée",
     "selectSession": "Choisir une session"
   },
+
   "faq": {
-    "q1":"Quelle est la différence entre RFQ et RFP ?",
-    "a1":"Le RFQ demande un prix pour un besoin défini ; le RFP attend une proposition détaillée.",
-    "q2":"Gérez-vous l'aviation ?",
-    "a2":"Oui, via Star Aviation (travail aérien : navettes, charters, medevac, sol, maintenance)."
+    "q1": "Quelle est la différence entre RFQ et RFP ?",
+    "a1": "Le RFQ demande un prix pour un besoin défini ; le RFP attend une proposition détaillée.",
+    "q2": "Gérez-vous l'aviation ?",
+    "a2": "Oui, via Star Aviation (travail aérien : navettes, charters, medevac, sol, maintenance)."
   },
+
   "contact": { 
-    "title":"Parlons de votre besoin", 
-    "subtitle":"Décrivez votre site, vos profils et votre planning." 
+    "title": "Parlons de votre besoin", 
+    "subtitle": "Décrivez votre site, vos profils et votre planning." 
   },
+
   "footer": {
-    "hq":"Sièges & bases : Adrar — Alger — Hassi Messaoud",
-    "legal":"Mentions légales", 
-    "privacy":"Confidentialité"
+    "hq": "Sièges & bases : Adrar — Alger — Hassi Messaoud",
+    "legal": "Mentions légales", 
+    "privacy": "Confidentialité"
   },
+
   "offline": {
     "title": "Connexion indisponible",
     "description": "Vous êtes actuellement hors ligne. Veuillez vérifier votre connexion internet et réessayer.",
