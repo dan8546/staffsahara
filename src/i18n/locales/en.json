@@ -1,12 +1,13 @@
 {
   "brand": "Staff Sahara",
-  "auth": {
-    "login_success": "Login successful",
-    "check_mail": "Check your mailbox — link expires in 60 min.",
-    "resend": "Resend link",
-    "link_expired": "Invalid or expired link",
-    "welcome_back": "Welcome back!"
+
+  "common": {
+    "back": "Back",
+    "loading": "Loading...",
+    "error": "Error",
+    "cancel": "Cancel"
   },
+
   "auth": {
     "login_success": "Login successful",
     "welcome_back": "Welcome back!",
@@ -14,25 +15,29 @@
     "resend": "Resend link",
     "link_expired": "Invalid or expired link"
   },
+
   "nav": { 
-    "b2b":"B2B Solutions", 
-    "b2c":"Talent Hub", 
-    "about":"About", 
-    "rfq":"Request Quote", 
-    "passport":"My Passport", 
-    "jobs":"Jobs", 
-    "login":"Login" 
+    "b2b": "B2B Solutions", 
+    "b2c": "Talent Hub", 
+    "about": "About", 
+    "rfq": "Request Quote", 
+    "passport": "My Passport", 
+    "jobs": "Jobs", 
+    "login": "Login" 
   },
+
   "cta": {
-    "getQuote":"Get Quote", 
-    "createPassport":"Create My Passport", 
-    "viewMissions":"View My Missions",
-    "airQuote":"Request Star Aviation Quote", 
-    "seeAviation":"See Our Aviation Capabilities"
+    "getQuote": "Get Quote", 
+    "createPassport": "Create My Passport", 
+    "viewMissions": "View My Missions",
+    "airQuote": "Request Star Aviation Quote", 
+    "seeAviation": "See Our Aviation Capabilities"
   },
+
   "public": {
     "banner": "You are viewing the public version — some features require login."
   },
+
   "about": {
     "title": "About Staff Sahara",
     "subtitle": "HR & logistics solutions rooted in the Greater South — serving energy, ICT and industries.",
@@ -49,8 +54,17 @@
     "services_title": "What we do",
     "services": ["Recruitment & staffing", "Rotation management", "Compliance & certifications", "Logistics & site support"],
     "rmtc_title": "RMTC — RedMed Training Center",
-    "rmtc_text": "Training & certifications (H2S, BOSIET, First Aid, periodic refreshers) to strengthen talent employability and ensure mission compliance."
+    "rmtc_text": "Training & certifications (H2S, BOSIET, First Aid, periodic refreshers) to strengthen talent employability and ensure mission compliance.",
+
+    "mission_title": "Who are we?",
+    "mission_body": "HR & technical assistance subsidiary of RedMed Group, born from Oil & Gas, expert in desert environments. We combine recruitment, HSE compliance and field logistics to ensure operational continuity.",
+    "services_list_title": "Our services",
+    "services_list": ["Head-hunting & recruitment", "HR & payroll", "Training & Certifications (RMTC)", "Travel & visas"],
+    "zones_title": "Operations zones — Deep South",
+    "team_title": "Our team",
+    "cta": "Let's discuss your next site"
   },
+
   "quote": {
     "title": "Get a quote",
     "subtitle": "Tell us what you need: profiles, sites, deadlines, compliance.",
@@ -63,17 +77,20 @@
     "submit": "Send request",
     "ok": "Your request has been sent. Our team will contact you quickly."
   },
+
   "leads": {
     "title": "Quote requests",
     "export": "Export CSV",
     "empty": "No requests yet."
   },
+
   "seo": {
     "training_title": "RMTC Training — RedMed Training Center",
     "training_desc": "Official RMTC catalog: H2S, BOSIET, First Aid... Upcoming sessions, certificates and recycling.",
     "course_title": "Training {{code}} — {{title}} | RMTC",
     "course_desc": "Program {{title}} ({{code}}), duration {{hours}}h — upcoming sessions in {{location}}."
   },
+
   "analytics": {
     "title": "RMTC Analytics",
     "kpis": {
@@ -84,12 +101,14 @@
     },
     "top_courses": "Top courses (30d)"
   },
+
   "jobs": {
     "title": "Job Offers - Staff Sahara",
     "description": "Discover job opportunities in the Algerian Deep South. Oil & Gas, engineering, HSE and logistics positions.",
     "apply": "Apply",
     "compat": "Compatibility"
   },
+
   "getQuote": {
     "title": "Request Quote",
     "subtitle": "Describe your needs and receive a personalized commercial proposal",
@@ -113,90 +132,87 @@
       "error": "An error occurred. Please try again."
     }
   },
+
   "hero": {
-    "title":"Technical & HR Support for Remote Sites in the Deep South",
-    "subtitle":"Recruitment, compliance, rotations and logistics — a unified platform backed by RedMed synergies."
+    "title": "Technical & HR Support for Remote Sites in the Deep South",
+    "subtitle": "Recruitment, compliance, rotations and logistics — a unified platform backed by RedMed synergies."
   },
+
   "capabilities": {
     "staffing": { 
-      "title":"Staffing & Mission Control", 
-      "desc":"From RFQ to signed mission: documents, e-sign, SLA, visibility." 
+      "title": "Staffing & Mission Control", 
+      "desc": "From RFQ to signed mission: documents, e-sign, SLA, visibility." 
     },
     "docs": { "title": "Documents" },
     "aviation": { "tab": "Star Aviation" },
     "compliance": {
-      "title":"Compliance & HSE", 
-      "desc":"Passports, certificates, medical: compliance by-design." 
+      "title": "Compliance & HSE", 
+      "desc": "Passports, certificates, medical: compliance by-design." 
     },
     "rotations": { 
-      "title":"Rotations & Logistics", 
-      "desc":"Plan rotations, travel and site services with our BU." 
+      "title": "Rotations & Logistics", 
+      "desc": "Plan rotations, travel and site services with our BU." 
     }
   },
+
   "synergies": {
-    "medical":"24/7 Medical Assistance",
-    "mobile":"Mobile Units & Life Bases",
-    "energy":"Temporary Energy",
-    "ict":"ICT & Datacenter",
-    "rmtc":"RMTC — RedMed Training Center",
+    "medical": "24/7 Medical Assistance",
+    "mobile": "Mobile Units & Life Bases",
+    "energy": "Temporary Energy",
+    "ict": "ICT & Datacenter",
+    "rmtc": "RMTC — RedMed Training Center",
     "starAviation": {
-      "title":"Star Aviation — Aerial Work",
-      "k1":"Personnel transport (shuttles) between sites and hubs",
-      "k2":"Dedicated charter flights (Algeria ↔ Europe)",
-      "k3":"On-demand flights (Algeria, Europe, Africa)",
-      "k4":"24/7 Medical evacuation",
-      "k5":"Ground assistance & formalities",
-      "k6":"Approved maintenance (Diamond, Textron)"
+      "title": "Star Aviation — Aerial Work",
+      "k1": "Personnel transport (shuttles) between sites and hubs",
+      "k2": "Dedicated charter flights (Algeria ↔ Europe)",
+      "k3": "On-demand flights (Algeria, Europe, Africa)",
+      "k4": "24/7 Medical evacuation",
+      "k5": "Ground assistance & formalities",
+      "k6": "Approved maintenance (Diamond, Textron)"
     },
     "siyaha": {
-      "title":"Ain Salah Siyaha — Ticketing",
-      "k1":"Ticket issuance (Air Algérie and partners)",
-      "k2":"Route optimization & changes",
-      "k3":"Corporate traveler support"
+      "title": "Ain Salah Siyaha — Ticketing",
+      "k1": "Ticket issuance (Air Algérie and partners)",
+      "k2": "Route optimization & changes",
+      "k3": "Corporate traveler support"
     }
   },
+
   "rfq": {
-    "step1":"Profiles & volumes", 
-    "step2":"Sites & SLA", 
-    "step3":"Add-ons & services",
-    "airlift":"Star Aviation needs (aerial work)", 
-    "airlift_note":"Reserved for contracted clients; plan shuttles/charters/medevac.",
-    "ticketing":"Ticketing (Ain Salah Siyaha)",
-    "submit":"Submit RFQ",
-    "saved":"RFQ saved — check your missions."
+    "step1": "Profiles & volumes", 
+    "step2": "Sites & SLA", 
+    "step3": "Add-ons & services",
+    "airlift": "Star Aviation needs (aerial work)", 
+    "airlift_note": "Reserved for contracted clients; plan shuttles/charters/medevac.",
+    "ticketing": "Ticketing (Ain Salah Siyaha)",
+    "submit": "Submit RFQ",
+    "saved": "RFQ saved — check your missions."
   },
+
   "rfq_form": {
-    "step1":"Profiles & volumes",
-    "profile":"Profile",
-    "seniority":"Seniority",
-    "qty":"Quantity",
-    "addProfile":"+ Add profile",
-    "next":"Next",
-    "step2":"Sites & SLA",
-    "sites":"Sites",
-    "startDate":"Start date",
-    "rotationOn":"Days ON",
-    "rotationOff":"Days OFF",
-    "languages":"Languages",
-    "hse":"HSE requirements",
-    "step3":"Add-ons & services",
+    "step1": "Profiles & volumes",
+    "profile": "Profile",
+    "seniority": "Seniority",
+    "qty": "Quantity",
+    "addProfile": "+ Add profile",
+    "next": "Next",
+    "step2": "Sites & SLA",
+    "sites": "Sites",
+    "startDate": "Start date",
+    "rotationOn": "Days ON",
+    "rotationOff": "Days OFF",
+    "languages": "Languages",
+    "hse": "HSE requirements",
+    "step3": "Add-ons & services",
     "placeholders": {
-      "profile":"HSE Technician, Electrician...",
-      "qty":"Ex.: 5"
+      "profile": "HSE Technician, Electrician...",
+      "qty": "Ex.: 5"
     },
     "helpers": {
-      "rotation":"Ex.: 14/14 or 28/28"
+      "rotation": "Ex.: 14/14 or 28/28"
     }
   },
-  "about": {
-    "mission_title":"Who are we?",
-    "mission_body":"HR & technical assistance subsidiary of RedMed Group, born from Oil & Gas, expert in desert environments. We combine recruitment, HSE compliance and field logistics to ensure operational continuity.",
-    "services_title":"Our services",
-    "services_list":["Head-hunting & recruitment", "HR & payroll", "Training & Certifications (RMTC)", "Travel & visas"],
-    "zones_title":"Operations zones — Deep South",
-    "team_title":"Our team",
-    "cta":"Let's discuss your next site"
-  },
+
   "rmtc": {
     "catalog_title": "Training & Certifications (RMTC)",
     "catalog_subtitle": "Build your employability and maintain team compliance with RedMed Training Center.",
@@ -205,6 +221,7 @@
     "cta_propose": "Propose an RMTC session",
     "badge_certified": "RMTC-OK"
   },
+
   "training": {
     "title": "Training & Certifications (RMTC)",
     "browse": "Discover your training path.",
@@ -227,22 +244,87 @@
     "noSessions": "No sessions scheduled",
     "selectSession": "Select a session"
   },
+
   "faq": {
-    "q1":"What's the difference between RFQ and RFP?",
-    "a1":"RFQ requests a price for a defined need; RFP expects a detailed proposal.",
-    "q2":"Do you manage aviation?",
-    "a2":"Yes, via Star Aviation (aerial work: shuttles, charters, medevac, ground, maintenance)."
+    "q1": "What's the difference between RFQ and RFP?",
+    "a1": "RFQ requests a price for a defined need; RFP expects a detailed proposal.",
+    "q2": "Do you manage aviation?",
+    "a2": "Yes, via Star Aviation (aerial work: shuttles, charters, medevac, ground, maintenance)."
   },
+
   "contact": { 
-    "title":"Let's talk about your needs", 
-    "subtitle":"Describe your site, profiles and schedule." 
+    "title": "Let's talk about your needs", 
+    "subtitle": "Describe your site, profiles and schedule." 
   },
+
   "footer": {
-    "hq":"HQ & bases: Adrar — Algiers — Hassi Messaoud",
-    "legal":"Legal Notice", 
-    "privacy":"Privacy"
+    "hq": "HQ & bases: Adrar — Algiers — Hassi Messaoud",
+    "legal": "Legal Notice", 
+    "privacy": "Privacy"
   },
+
   "missions": {
+    "title": "My Missions",
+    "subtitle": "Manage your current and upcoming missions",
+
+    "untitled": "New mission",
+    "createFromRfq": "Create from RFQ",
+    "newMission": "New Mission",
+    "viewDetails": "View details",
+    "edit": "Edit",
+
+    "tabs": {
+      "overview": "Overview",
+      "documents": "Documents",
+      "aviation": "Star Aviation",
+      "compliance": "Compliance & RMTC"
+    },
+
+    "overview": {
+      "description": "Mission description",
+      "empty": "No description yet.",
+      "infos": "Information",
+      "period": "Period",
+      "client": "Client"
+    },
+
+    "status": {
+      "draft": "Draft",
+      "in_review": "In review",
+      "signed": "Signed",
+      "active": "Active",
+      "completed": "Completed"
+    },
+
+    "table": {
+      "title": "Title",
+      "site": "Site",
+      "status": "Status",
+      "createdAt": "Created at",
+      "actions": "Actions"
+    },
+
+    "filters": {
+      "all": "All",
+      "status": "Status",
+      "site": "Site"
+    },
+
+    "emptyState": {
+      "title": "No missions found",
+      "description": "Start by creating your first mission from an RFQ or create a new one.",
+      "createFirst": "Create my first mission"
+    },
+
+    "createModal": {
+      "title": "Create a mission from an RFQ",
+      "selectRfq": "Select an RFQ",
+      "aviation": "Aviation",
+      "preview": "Preview",
+      "create": "Create mission",
+      "cancel": "Cancel"
+    },
+
     "docs": {
       "title": "Documents",
       "upload": "Upload",
@@ -258,6 +340,7 @@
       "delete": "Delete",
       "empty": "No documents for this mission."
     },
+
     "aviation": {
       "tab": "Star Aviation",
       "create": "Create Request",
@@ -287,17 +370,19 @@
       "exportPdf": "Export PDF",
       "empty": "No aviation requests for this mission."
     },
+
     "compliance": {
       "tab": "Compliance & RMTC",
       "required": "Required certifications",
       "propose": "Propose RMTC session",
       "addCert": "Add certification",
-      "selectCerts": "Select required certifications", 
+      "selectCerts": "Select required certifications",
       "proposeSessions": "Available RMTC sessions",
       "noSessions": "No sessions available",
       "enrolled": "Enrolled"
     }
   },
+
   "reminders": {
     "title": "RMTC Reminders",
     "sessions": "Session reminders D-7",
@@ -305,10 +390,12 @@
     "send": "Send reminder",
     "notify": "Notify"
   },
+
   "passport": {
     "title": "Talent Passport",
     "save": "Save"
   },
+
   "offline": {
     "title": "Connection unavailable",
     "description": "You are currently offline. Please check your internet connection and try again.",
