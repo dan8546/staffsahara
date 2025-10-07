@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowLeft, MapPin, Calendar, User, FileText, Phone } from "lucide-react";
+import { ArrowLeft, MapPin, Calendar, User, Phone } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import MissionDocuments from "@/components/MissionDocuments";
 import MissionAviation from "@/components/MissionAviation";
@@ -38,17 +38,33 @@ const MissionDetail = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { toast } = useToast();
 
   const [mission, setMission] = useState<Mission | null>(null);
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState<string | null>(null);
 
+  // État du dialog et champs du formulaire
+  const [editOpen, setEditOpen] = useState(false);
+  const [formTitle, setFormTitle] = useState("");
+  const [formDescription, setFormDescription] = useState("");
+  const [formLocation, setFormLocation] = useState("");
+  const [formSite, setFormSite] = useState("");
+  const [formStart, setFormStart] = useState<string | "">("");
+  const [formEnd, setFormEnd] = useState<string | "">("");
+
+  // Charger la mission
   useEffect(() => {
     const fetchMission = async () => {
       if (!id) return;
       setLoading(true);
       setErr(null);
-      const { data, error } = await supabase.from("missions").select("*").eq("id", id).single();
+      const { data, error } = await supabase
+        .from("missions")
+        .select("*")
+        .eq("id", id)
+        .single();
+
       if (error) {
         setErr(error.message);
         setMission(null);
@@ -59,6 +75,17 @@ const MissionDetail = () => {
     };
     fetchMission();
   }, [id]);
+
+  // Pré-remplir le formulaire quand la mission est chargée
+  useEffect(() => {
+    if (!mission) return;
+    setFormTitle(mission.title ?? "");
+    setFormDescription(mission.description ?? "");
+    setFormLocation(mission.location ?? "");
+    setFormSite(mission.site ?? "");
+    setFormStart(mission.start_date ? mission.start_date.slice(0, 10) : "");
+    setFormEnd(mission.end_date ? mission.end_date.slice(0, 10) : "");
+  }, [mission]);
 
   const statusBadge = (s?: Mission["status"]) => {
     switch (s) {
@@ -160,7 +187,6 @@ const MissionDetail = () => {
                     </div>
                   </div>
                 </div>
-                {/* Contact/company: placeholders tant que non modélisé en base */}
                 <div className="flex items-center gap-2">
                   <User className="h-4 w-4" />
                   <div>
@@ -180,7 +206,9 @@ const MissionDetail = () => {
             <Button variant="outline" asChild>
               <Link to="/missions">{t("common.cancel") || "Retour"}</Link>
             </Button>
-            <Button>{t("missions.edit") || "Modifier Mission"}</Button>
+            <Button onClick={() => setEditOpen(true)}>
+              {t("missions.edit") || "Modifier Mission"}
+            </Button>
           </div>
         </TabsContent>
 
@@ -196,6 +224,97 @@ const MissionDetail = () => {
           <MissionCompliance missionId={mission.id} />
         </TabsContent>
       </Tabs>
+
+      {/* Dialog d’édition */}
+      <Dialog open={editOpen} onOpenChange={setEditOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>{t("missions.edit") || "Modifier la mission"}</DialogTitle>
+          </DialogHeader>
+
+          <div className="grid gap-4 py-2">
+            <div className="grid gap-2">
+              <Label htmlFor="title">Titre</Label>
+              <Input id="title" value={formTitle} onChange={(e) => setFormTitle(e.target.value)} />
+            </div>
+
+            <div className="grid gap-2">
+              <Label htmlFor="description">{t("missions.overview.description") || "Description"}</Label>
+              <Textarea
+                id="description"
+                value={formDescription}
+                onChange={(e) => setFormDescription(e.target.value)}
+                rows={4}
+              />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid gap-2">
+                <Label htmlFor="location">Localisation</Label>
+                <Input id="location" value={formLocation} onChange={(e) => setFormLocation(e.target.value)} />
+              </div>
+
+              <div className="grid gap-2">
+                <Label htmlFor="site">Site</Label>
+                <Input id="site" value={formSite} onChange={(e) => setFormSite(e.target.value)} />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid gap-2">
+                <Label htmlFor="start">{t("rfq_form.startDate") || "Date de démarrage"}</Label>
+                <Input id="start" type="date" value={formStart} onChange={(e) => setFormStart(e.target.value)} />
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="end">Date de fin</Label>
+                <Input id="end" type="date" value={formEnd} onChange={(e) => setFormEnd(e.target.value)} />
+              </div>
+            </div>
+          </div>
+
+          <DialogFooter className="gap-2">
+            <Button variant="outline" onClick={() => setEditOpen(false)}>
+              {t("common.cancel") || "Annuler"}
+            </Button>
+            <Button
+              onClick={async () => {
+                if (!mission) return;
+                const { data, error } = await supabase
+                  .from("missions")
+                  .update({
+                    title: formTitle || null,
+                    description: formDescription || null,
+                    location: formLocation || null,
+                    site: formSite || null,
+                    start_date: formStart || null,
+                    end_date: formEnd || null,
+                  })
+                  .eq("id", mission.id)
+                  .select("*")
+                  .single();
+
+                if (error) {
+                  toast({
+                    title: t("common.error") || "Erreur",
+                    description: error.message,
+                    variant: "destructive",
+                  });
+                  return;
+                }
+
+                setMission(data as Mission);
+                setEditOpen(false);
+                toast({
+                  title: t("passport.save") || "Enregistré",
+                  description: t("missions.edit") || "Mission mise à jour.",
+                });
+              }}
+            >
+              {t("passport.save") || "Enregistrer"}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
