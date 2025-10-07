@@ -10,6 +10,17 @@ import { supabase } from "@/integrations/supabase/client";
 import MissionDocuments from "@/components/MissionDocuments";
 import MissionAviation from "@/components/MissionAviation";
 import MissionCompliance from "@/components/MissionCompliance";
+import { useToast } from "@/hooks/use-toast";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog";
 
 type Mission = {
   id: string;
