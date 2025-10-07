@@ -32,6 +32,11 @@ type Mission = {
   end_date: string | null;
   status: "draft" | "in_review" | "signed" | "active" | "completed" | string;
   created_at: string;
+
+  // 👇 nouveaux champs client
+  client_name: string | null;
+  client_email: string | null;
+  client_phone: string | null;
 };
 
 const MissionDetail = () => {
@@ -52,6 +57,11 @@ const MissionDetail = () => {
   const [formSite, setFormSite] = useState("");
   const [formStart, setFormStart] = useState<string | "">("");
   const [formEnd, setFormEnd] = useState<string | "">("");
+
+  // 👇 champs client
+  const [formClientName, setFormClientName] = useState("");
+  const [formClientEmail, setFormClientEmail] = useState("");
+  const [formClientPhone, setFormClientPhone] = useState("");
 
   // Charger la mission
   useEffect(() => {
@@ -85,6 +95,11 @@ const MissionDetail = () => {
     setFormSite(mission.site ?? "");
     setFormStart(mission.start_date ? mission.start_date.slice(0, 10) : "");
     setFormEnd(mission.end_date ? mission.end_date.slice(0, 10) : "");
+
+    // 👇 champs client
+    setFormClientName(mission.client_name ?? "");
+    setFormClientEmail(mission.client_email ?? "");
+    setFormClientPhone(mission.client_phone ?? "");
   }, [mission]);
 
   const statusBadge = (s?: Mission["status"]) => {
@@ -187,16 +202,22 @@ const MissionDetail = () => {
                     </div>
                   </div>
                 </div>
+
+                {/* 👇 Client */}
                 <div className="flex items-center gap-2">
                   <User className="h-4 w-4" />
                   <div>
                     <div className="font-medium">{t("missions.overview.client") || "Client"}</div>
-                    <div>—</div>
+                    <div>{mission.client_name || "—"}</div>
+                    <div className="text-muted-foreground text-sm">
+                      {mission.client_email || "—"}
+                    </div>
                   </div>
                 </div>
+
                 <div className="flex items-center gap-2">
                   <Phone className="h-4 w-4" />
-                  <div>—</div>
+                  <div>{mission.client_phone || "—"}</div>
                 </div>
               </CardContent>
             </Card>
@@ -270,6 +291,38 @@ const MissionDetail = () => {
                 <Input id="end" type="date" value={formEnd} onChange={(e) => setFormEnd(e.target.value)} />
               </div>
             </div>
+
+            {/* 👇 Champs client */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid gap-2">
+                <Label htmlFor="client_name">Nom du client</Label>
+                <Input
+                  id="client_name"
+                  value={formClientName}
+                  onChange={(e) => setFormClientName(e.target.value)}
+                  placeholder="Company A / Contact"
+                />
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="client_email">Email du client</Label>
+                <Input
+                  id="client_email"
+                  type="email"
+                  value={formClientEmail}
+                  onChange={(e) => setFormClientEmail(e.target.value)}
+                  placeholder="contact@company.com"
+                />
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="client_phone">Téléphone du client</Label>
+                <Input
+                  id="client_phone"
+                  value={formClientPhone}
+                  onChange={(e) => setFormClientPhone(e.target.value)}
+                  placeholder="+213 ..."
+                />
+              </div>
+            </div>
           </div>
 
           <DialogFooter className="gap-2">
@@ -288,6 +341,11 @@ const MissionDetail = () => {
                     site: formSite || null,
                     start_date: formStart || null,
                     end_date: formEnd || null,
+
+                    // 👇 mise à jour des champs client
+                    client_name: formClientName || null,
+                    client_email: formClientEmail || null,
+                    client_phone: formClientPhone || null,
                   })
                   .eq("id", mission.id)
                   .select("*")
